@@ -1,19 +1,24 @@
-import { useState } from "react";
-import CheckIndication from "./components/CheckIndication";
-import SeedGateway from "./components/SeedGateway";
-import Navbar from "./components/Navbar";
+import React, { useState } from "react";
+import Navbar from "@renderer/components/Navbar";
+import CheckIndication from "@renderer/components/CheckIndication";
+import SeedGateway from "@renderer/components/SeedGateway";
 
-function App(): JSX.Element {
-    //   const ipcHandle = (): void => window.electron.ipcRenderer.send('ping')
+export function Dashboard() {
     const [isRunning, setIsRunning] = useState<boolean>(false);
     const [messages, setMessages] = useState<string[]>([]);
+    // const win = window as any;
+
+    //   useEffect(() => {
+    //     win.ipc.on('message', (messages: string) => {
+    //       setMessages()
+    //     })
+    //   }, [])
 
     return (
-        <div>
+        <div className="dashboard">
             <Navbar />
             <div className="max-w-screen-xl mx-auto">
                 <div className="stopwatch text-left my-10">
-                    {/* <div>{session?.user?.name}</div> */}
                     <CheckIndication
                         isRunning={isRunning}
                         setIsRunning={setIsRunning}
@@ -31,5 +36,3 @@ function App(): JSX.Element {
         </div>
     );
 }
-
-export default App;

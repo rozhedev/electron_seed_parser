@@ -14,7 +14,7 @@ export const getSendedSeed = async (uniqueSelector: string, projection: Partial<
         }
         const data = await res.json();
         const { sended_seed } = data;
-        
+
         if (!sended_seed.length) setMessages([UI_CONTENT.seedFoundStatus.notFound]);
         else setMessages([...sended_seed]);
     } catch (error) {

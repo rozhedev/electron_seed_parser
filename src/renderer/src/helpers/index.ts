@@ -50,3 +50,5 @@ export const getCurrentTimeFormat = (): string => {
     const minutes = date.getMinutes();
     return `${formatted(hours)}:${formatted(minutes)}`;
 }
+
+export const getHostname = (protocol: string, port: number, route?: string) => `${protocol}://localhost:${port}/${route}`;

@@ -1,5 +1,3 @@
-"use client";
-
 import React, { FC, useEffect, useRef, useState } from "react";
 import { TLogsGenProps } from "./types";
 import { genSeedphrase } from "../../helpers";

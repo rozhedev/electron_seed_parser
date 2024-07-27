@@ -1,5 +1,3 @@
-"use client";
-
 import React, { FC, useState, useRef, useEffect } from "react";
 // import { useSession } from "next-auth/react";
 import Btn from "../../ui/Btn/Btn";

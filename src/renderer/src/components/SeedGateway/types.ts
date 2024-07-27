@@ -1,4 +1,4 @@
-import { TRunningState } from "@/types";
+import { TRunningState } from "../../types";
 import { Dispatch, SetStateAction } from "react";
 
 type TMessages = string[];

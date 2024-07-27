@@ -1,5 +1,3 @@
-"use client";
-
 import React, { FC, useState } from "react";
 // import Link from "next/link";
 // import { signOut } from "next-auth/react";

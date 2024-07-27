@@ -19,3 +19,8 @@ export type TRunningState = {
 };
 
 export type TComputed = { [key: string]: string };
+
+export type TFormData = {
+    password: string;
+};
+export type TLoginCb = (cb: (res: { success: boolean; message?: string }) => void) => void;

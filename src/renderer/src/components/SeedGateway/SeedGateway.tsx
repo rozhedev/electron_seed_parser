@@ -1,10 +1,10 @@
-import { FC, useEffect, useState } from "react";
+import React, { FC, useState } from "react";
 // import { useSession } from "next-auth/react";
 import Btn from "../../ui/Btn/Btn";
 import { TSeedGateway } from "./types";
 import { getSendedSeed } from "./helpers";
 import { getCurrentDateFormat, getCurrentTimeFormat } from "../../helpers";
-import { UI_CONTENT, SENDED_SEED_PROJ } from "../../data/init-data";
+import { UI_CONTENT } from "../../data/init-data";
 
 export const SeedGateway: FC<TSeedGateway> = ({ isRunning, messages, setMessages, className }) => {
     // const { data: session } = useSession();
@@ -22,7 +22,7 @@ export const SeedGateway: FC<TSeedGateway> = ({ isRunning, messages, setMessages
             <div className="mt-9">Дата последней проверки: {updateDate}</div>
             <code className={className}>
                 <span>Найдена валидная seed-фраза:</span>
-                {messages.map((msg, index) => (
+                {messages.map((msg: any, index: number) => (
                     <span key={index}>{msg}</span>
                 ))}
             </code>
