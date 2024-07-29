@@ -6,13 +6,6 @@ import SeedGateway from "@renderer/components/SeedGateway";
 export function Dashboard() {
     const [isRunning, setIsRunning] = useState<boolean>(false);
     const [messages, setMessages] = useState<string[]>([]);
-    // const win = window as any;
-
-    //   useEffect(() => {
-    //     win.ipc.on('message', (messages: string) => {
-    //       setMessages()
-    //     })
-    //   }, [])
 
     return (
         <div className="dashboard">

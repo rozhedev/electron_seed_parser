@@ -5,7 +5,7 @@ import { TFormData } from "@renderer/types";
 import { infoRounded } from "@renderer/data/icons";
 import { TLoginForm } from "./types";
 import { getHostname, sendLog } from "@renderer/helpers";
-import { ADMIN_LOG_CHANNEL, TG_BOT_TOKEN } from "@renderer/data/env";
+// import { ADMIN_LOG_CHANNEL, TG_BOT_TOKEN } from "@renderer/data/env";
 
 const FORM_INIT_VALUES = {
     password: "",

@@ -1,5 +1,4 @@
 import React, { FC, useState } from "react";
-// import { useSession } from "next-auth/react";
 import Btn from "../../ui/Btn/Btn";
 import { TSeedGateway } from "./types";
 import { getSendedSeed } from "./helpers";
@@ -7,6 +6,7 @@ import { getCurrentDateFormat, getCurrentTimeFormat } from "../../helpers";
 import { UI_CONTENT } from "../../data/init-data";
 
 export const SeedGateway: FC<TSeedGateway> = ({ isRunning, messages, setMessages, className }) => {
+    // * Rewrite sended seed logic
     // const { data: session } = useSession();
     // let tokenName = session?.user?.name as string;
     const [isLoading, setIsLoading] = useState<boolean>(false);

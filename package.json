@@ -24,6 +24,7 @@
     "@electron-toolkit/preload": "^3.0.1",
     "@electron-toolkit/utils": "^3.0.0",
     "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
     "electron-router-dom": "^1.0.5",
     "express": "^4.19.2",
     "mongoose": "^8.5.1",

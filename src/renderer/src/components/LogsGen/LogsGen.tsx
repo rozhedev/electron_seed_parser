@@ -11,6 +11,6 @@ export const LogsGen: FC<TLogsGenProps> = ({ wordArr, seedPhraseLenght, isRunnin
         // * Hard type assertion for correct typo selection
         newSeed.current = genSeedphrase(wordArr, seedPhraseLenght);
         setSeedPhrase(newSeed.current);
-    }, [wordArr]);
+    }, [wordArr, seedPhraseLenght, isRunning]);
     return <span>Проверено: {seedPhrase}</span>;
 };

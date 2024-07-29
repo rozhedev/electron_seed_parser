@@ -9,7 +9,7 @@
         "src/renderer/src/data",
         "src/renderer/src/lib",
         "src/renderer/src/models",
-        "src/renderer/src/types"
+        "src/renderer/src/types",
     ],
     "compilerOptions": {
         "composite": true,

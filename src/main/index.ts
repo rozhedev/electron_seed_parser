@@ -1,8 +1,7 @@
 import { app, shell, BrowserWindow, BrowserWindowConstructorOptions as WindowOptions, ipcMain } from "electron";
-import { join } from "path";
+import { join, resolve } from "path";
 import mongoose from "mongoose";
 import express from "express";
-import bcrypt from "bcryptjs";
 import cors from "cors";
 
 import { electronApp, optimizer } from "@electron-toolkit/utils";
@@ -13,8 +12,6 @@ import { TFormData } from "../renderer/src/types";
 import { DB_URI } from "../renderer/src/data/env";
 import { SERVER_PORT, UI_CONTENT } from "../renderer/src/data/init-data";
 
-// * Error, when connected to db, when form submitting
-// MongooseError: The `uri` parameter to `openUri()` must be a string, got "undefined". Make sure the first parameter to `mongoose.connect()` or `mongoose.createConnection()` is a string.
 
 function createWindow(id: string, options: WindowOptions = {}): any {
     const mainWindow = new BrowserWindow({ ...options });
@@ -67,21 +64,6 @@ app.whenReady().then(() => {
 
     mongoose.connect(DB_URI);
 
-    // // * Register logic
-    // expressApp.post("/register", async (req, res) => {
-    //     const { email, username, password } = req.body;
-
-    //     try {
-    //         const hashedPassword = await bcrypt.hash(password, 10);
-    //         const user = new User({ email, username, password: hashedPassword });
-
-    //         await user.save();
-    //         // * Don't remove send methods in successful statuses
-    //         res.status(201).send("User registered");
-    //     } catch (error: any) {
-    //         res.status(400).send(error.message);
-    //     }
-    // });
     // * Auth logic
     expressApp.post("/", async (req: any, res: any) => {
         const { password } = req.body;
@@ -92,11 +74,6 @@ app.whenReady().then(() => {
             if (!user || user === null) {
                 return res.status(401).send(UI_CONTENT.authErr);
             }
-
-            // const isMatch = await bcrypt.compare(password, user.password);
-            // if (!isMatch) {
-            //     return res.status(401).send(UI_CONTENT.authErr);
-            // }
 
             res.status(200).send("Login succesful");
         } catch (error: any) {
@@ -130,16 +107,6 @@ app.on("window-all-closed", () => {
     }
 });
 
-// --> IPC Handlers
-// ipcMain.handle("api-register", async (_e: any, data: TFormData) => {
-//     const res = await fetch(getHostname("http", SERVER_PORT, "register"), {
-//         method: "POST",
-//         headers: { "Content-Type": "application/json" },
-//         body: JSON.stringify(data),
-//     });
-//     return await res.json();
-// });
-
 ipcMain.handle("api-login", async (_e: any, data: TFormData) => {
     const res = await fetch(getHostname("http", SERVER_PORT, "login"), {
         method: "POST",
@@ -158,16 +125,9 @@ ipcMain.on("auth-validate", async (e, formData: TFormData) => {
         }
     } catch (error) {
         console.log(error);
-        
+
         e.reply("login-res", { success: true });
     }
-
-    // const isMatch = await bcrypt.compare(formData.password, user.password);
-
-    // if (!isMatch) {
-    //     e.reply("login-res", { success: false, message: UI_CONTENT.authErr });
-    // } else {
-    // }
 });
 
 ipcMain.handle("api-dashboard", async () => {
