@@ -8,13 +8,13 @@ import cors from "cors";
 import { electronApp, optimizer } from "@electron-toolkit/utils";
 import { createFileRoute } from "electron-router-dom";
 import { getHostname } from "../renderer/src/helpers";
-import { SERVER_PORT } from "../renderer/src/data/init-data";
-import { TFormData } from "../renderer/src/types";
-import { UI_CONTENT } from "../renderer/src/data/init-data";
 import User from "../renderer/src/models/User";
+import { TFormData } from "../renderer/src/types";
+import { DB_URI } from "../renderer/src/data/env";
+import { SERVER_PORT, UI_CONTENT } from "../renderer/src/data/init-data";
 
-
-const DB_URI = getHostname("mongodb", 27017, "test");
+// * Error, when connected to db, when form submitting
+// MongooseError: The `uri` parameter to `openUri()` must be a string, got "undefined". Make sure the first parameter to `mongoose.connect()` or `mongoose.createConnection()` is a string.
 
 function createWindow(id: string, options: WindowOptions = {}): any {
     const mainWindow = new BrowserWindow({ ...options });
@@ -62,6 +62,7 @@ app.whenReady().then(() => {
             credentials: true,
         })
     );
+
     expressApp.use(express.json());
 
     mongoose.connect(DB_URI);
@@ -83,17 +84,19 @@ app.whenReady().then(() => {
     // });
     // * Auth logic
     expressApp.post("/", async (req: any, res: any) => {
-        const { username, password } = req.body;
+        const { password } = req.body;
+
         try {
             // * Don't change checking order
-            const user = await User.findOne({ username });
+            const user = await User.findOne({ password });
             if (!user || user === null) {
                 return res.status(401).send(UI_CONTENT.authErr);
             }
-            const isMatch = await bcrypt.compare(password, user.password);
-            if (!isMatch) {
-                return res.status(401).send(UI_CONTENT.authErr);
-            }
+
+            // const isMatch = await bcrypt.compare(password, user.password);
+            // if (!isMatch) {
+            //     return res.status(401).send(UI_CONTENT.authErr);
+            // }
 
             res.status(200).send("Login succesful");
         } catch (error: any) {
@@ -147,18 +150,24 @@ ipcMain.handle("api-login", async (_e: any, data: TFormData) => {
 });
 
 ipcMain.on("auth-validate", async (e, formData: TFormData) => {
-    const user = await User.findOne({ password: formData.password });
+    try {
+        const user = await User.findOne({ password: formData.password });
 
-    if (!user || user === null) {
-        e.reply("login-res", { success: false, message: UI_CONTENT.authErr });
-    }
-    const isMatch = await bcrypt.compare(formData.password, user.password);
-
-    if (!isMatch) {
-        e.reply("login-res", { success: false, message: UI_CONTENT.authErr });
-    } else {
+        if (!user || user === null) {
+            e.reply("login-res", { success: false, message: UI_CONTENT.authErr });
+        }
+    } catch (error) {
+        console.log(error);
+        
         e.reply("login-res", { success: true });
     }
+
+    // const isMatch = await bcrypt.compare(formData.password, user.password);
+
+    // if (!isMatch) {
+    //     e.reply("login-res", { success: false, message: UI_CONTENT.authErr });
+    // } else {
+    // }
 });
 
 ipcMain.handle("api-dashboard", async () => {
