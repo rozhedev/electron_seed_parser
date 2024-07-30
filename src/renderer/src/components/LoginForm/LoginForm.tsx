@@ -5,6 +5,7 @@ import { TFormData } from "@renderer/types";
 import { infoRounded } from "@renderer/data/icons";
 import { TLoginForm } from "./types";
 import { getHostname, sendLog } from "@renderer/helpers";
+import { useAuthContext } from "../../providers/AuthContext/index";
 // import { ADMIN_LOG_CHANNEL, TG_BOT_TOKEN } from "@renderer/data/env";
 
 const FORM_INIT_VALUES = {
@@ -15,6 +16,8 @@ export const LoginForm: FC<TLoginForm> = ({}) => {
     const [formData, setFormData] = useState<TFormData>(FORM_INIT_VALUES);
     const [authError, setAuthError] = useState<string | null>(null);
     const [isLoading, setIsLoading] = useState<boolean>(false);
+    const { setData } = useAuthContext();
+
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -30,7 +33,7 @@ export const LoginForm: FC<TLoginForm> = ({}) => {
     const handleSubmit = async (e: FormEvent) => {
         e.preventDefault();
         setIsLoading(true);
-        
+
         try {
             const res = await fetch(getHostname("http", SERVER_PORT, ""), {
                 method: "POST",
@@ -44,6 +47,7 @@ export const LoginForm: FC<TLoginForm> = ({}) => {
             if (res.ok) {
                 navigate("/dashboard");
                 setAuthError(null);
+                setData(formData);
                 setFormData(FORM_INIT_VALUES);
             }
         } catch (error) {

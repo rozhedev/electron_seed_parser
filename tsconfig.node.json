@@ -9,6 +9,7 @@
         "src/renderer/src/lib/**/*",
         "src/renderer/src/models/**/*",
         "src/renderer/src/types/**/*",
+        "src/renderer/src/providers/**/*",
     ],
     "compilerOptions": {
         "composite": true,
