@@ -1,5 +1,5 @@
 import { app, shell, BrowserWindow, BrowserWindowConstructorOptions as WindowOptions, ipcMain } from "electron";
-import { join, resolve } from "path";
+import { join } from "path";
 import mongoose from "mongoose";
 import express from "express";
 import cors from "cors";
@@ -117,9 +117,8 @@ ipcMain.handle("api-login", async (_e: any, data: TFormData) => {
 });
 
 ipcMain.on("auth-validate", async (e, formData: TFormData) => {
+    const user = await User.findOne({ password: formData.password });
     try {
-        const user = await User.findOne({ password: formData.password });
-
         if (!user || user === null) {
             e.reply("login-res", { success: false, message: UI_CONTENT.authErr });
         }

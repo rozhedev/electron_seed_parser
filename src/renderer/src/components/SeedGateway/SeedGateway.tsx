@@ -7,8 +7,6 @@ import { UI_CONTENT } from "../../data/init-data";
 
 export const SeedGateway: FC<TSeedGateway> = ({ isRunning, messages, setMessages, className }) => {
     // * Rewrite sended seed logic
-    // const { data: session } = useSession();
-    // let tokenName = session?.user?.name as string;
     const [isLoading, setIsLoading] = useState<boolean>(false);
     const [updateDate, setUpdateDate] = useState<string>(`${getCurrentTimeFormat()} | ${getCurrentDateFormat()}`);
 

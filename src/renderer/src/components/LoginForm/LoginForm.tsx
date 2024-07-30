@@ -11,15 +11,6 @@ const FORM_INIT_VALUES = {
     password: "",
 };
 
-declare global {
-    interface Window {
-        api: {
-            authValid: (data: TFormData) => void;
-            onLoginRes: (callback: (response: { success: boolean; message?: string }) => void) => void;
-        };
-    }
-}
-
 export const LoginForm: FC<TLoginForm> = ({}) => {
     const [formData, setFormData] = useState<TFormData>(FORM_INIT_VALUES);
     const [authError, setAuthError] = useState<string | null>(null);

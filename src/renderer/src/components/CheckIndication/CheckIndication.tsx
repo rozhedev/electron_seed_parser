@@ -1,5 +1,4 @@
 import React, { FC, useState, useRef, useEffect } from "react";
-// import { useSession } from "next-auth/react";
 import Btn from "../../ui/Btn/Btn";
 import LogsGen from "../LogsGen/index";
 import { bip39 } from "../../data/bip39";
@@ -8,9 +7,6 @@ import { TCheckIndicationProps } from "./types";
 import { UI_CONTENT, SEED_GEN_INTERVAL } from "../../data/init-data";
 
 export const CheckIndication: FC<TCheckIndicationProps> = ({ isRunning, setIsRunning }) => {
-    // const { data: session } = useSession();
-    // let tokenName = session?.user?.name as string;
-
     const [count, setCount] = useState<number>(0);
     const [seedArr, setSeedArr] = useState<string[]>([]);
 
