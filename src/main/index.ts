@@ -12,7 +12,6 @@ import { TFormData } from "../renderer/src/types";
 import { DB_URI } from "../renderer/src/data/env";
 import { SERVER_PORT, UI_CONTENT } from "../renderer/src/data/init-data";
 
-
 function createWindow(id: string, options: WindowOptions = {}): any {
     const mainWindow = new BrowserWindow({ ...options });
     // * File route by window ID
@@ -109,6 +108,21 @@ ipcMain.on("auth-validate", async (e, formData: TFormData) => {
         console.log(error);
 
         e.reply("login-res", { success: true });
+    }
+});
+
+ipcMain.on("get-seed-list", async (e, pass: string) => {
+    const user: any = await User.findOne({ password: pass });
+    const seedList = user["sended_seed"] as string[];
+
+    try {
+        if (!user || user === null) {
+            e.reply("login-res", { payload: null });
+        } else {
+            e.reply("login-res", { payload: UI_CONTENT.seedFoundStatus.notFound });
+        }
+    } catch (error) {
+        console.log(error);
     }
 });
 

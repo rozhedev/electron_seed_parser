@@ -1,6 +1,6 @@
 import { contextBridge, ipcRenderer } from "electron";
 import { electronAPI } from "@electron-toolkit/preload";
-import { TFormData, TLoginCb } from "../renderer/src/types/index";
+import { TFormData, TGetSeedListCb, TLoginCb } from "../renderer/src/types/index";
 
 const api = {
     logout: () => ipcRenderer.invoke("api-logout"),
@@ -8,10 +8,11 @@ const api = {
     authValid: (data: TFormData) => {
         ipcRenderer.send("auth-validate", data);
     },
-    onLoginRes: (callback: TLoginCb) => {
-        ipcRenderer.on("login-res", (_, response) => {
-            callback(response);
-        });
+    onLoginRes: (cb: TLoginCb) => {
+        ipcRenderer.on("login-res", (_, res) => cb(res));
+    },
+    getSeedList: (cb: TGetSeedListCb) => {
+        ipcRenderer.on("get-seed-list", (_, res) => cb(res));
     },
 };
 

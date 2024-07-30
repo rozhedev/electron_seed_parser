@@ -11,6 +11,8 @@ export type TUser = {
     is_seed_sended: boolean;
 };
 
+export type TIsUserExist = TUser | null; 
+
 export type TUserProjection = Partial<Record<"_id" | "tg_username" | "name" | "password" | "sended_seed" | "is_search_started" | "is_seed_sended", number>>;
 
 export type TRunningState = {
@@ -24,3 +26,5 @@ export type TFormData = {
     password: string;
 };
 export type TLoginCb = (cb: (res: { success: boolean; message?: string }) => void) => void;
+
+export type TGetSeedListCb = (cb: (res: { payload: TIsUserExist }) => void) => void;

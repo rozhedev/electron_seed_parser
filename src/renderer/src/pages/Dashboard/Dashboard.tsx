@@ -9,12 +9,21 @@ export function Dashboard() {
     const [isRunning, setIsRunning] = useState<boolean>(false);
     const [messages, setMessages] = useState<string[]>([]);
     const [pass, setPass] = useState<string | undefined>(undefined);
+    const [seedList, setSeedList] = useState<string[]>([]);
     const { data } = useAuthContext();
 
     useEffect(() => {
         if (data?.password) {
             setPass(data?.password);
             // getSendedSeed(user.name, SENDED_SEED_PROJ, setMessages);
+            window.api.authValid((res: any) => {
+                if (res.payload !== null) {
+                    setSeedList(res.payload);
+                } else {
+                    setSeedList(["seed-фраз"]);
+
+                }
+            });
         }
     }, [data]);
 
