@@ -3,9 +3,6 @@ import { electronAPI } from "@electron-toolkit/preload";
 import { TFormData, TLoginCb } from "../renderer/src/types/index";
 
 const api = {
-    // register: (data: TFormData) => ipcRenderer.invoke("api-register", data),
-    login: (data: TFormData) => ipcRenderer.invoke("api-login", data),
-    dashboard: () => ipcRenderer.invoke("api-dashboard"),
     logout: () => ipcRenderer.invoke("api-logout"),
     authCheck: () => ipcRenderer.invoke("api-auth-check"),
     authValid: (data: TFormData) => {

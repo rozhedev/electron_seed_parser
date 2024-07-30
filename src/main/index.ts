@@ -80,14 +80,6 @@ app.whenReady().then(() => {
             res.status(400).send(error.message);
         }
     });
-    // * Dashboard logic
-    expressApp.get("/dashboard", async (_req, res) => {
-        try {
-            res.status(200);
-        } catch (error: any) {
-            res.status(500).send(error.message);
-        }
-    });
     // * Auth Check
     expressApp.get("/auth-check", (_req, res) => {
         res.status(200).send("Authenticated");
@@ -107,15 +99,6 @@ app.on("window-all-closed", () => {
     }
 });
 
-ipcMain.handle("api-login", async (_e: any, data: TFormData) => {
-    const res = await fetch(getHostname("http", SERVER_PORT, "login"), {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
-    });
-    return await res.json();
-});
-
 ipcMain.on("auth-validate", async (e, formData: TFormData) => {
     const user = await User.findOne({ password: formData.password });
     try {
@@ -127,14 +110,6 @@ ipcMain.on("auth-validate", async (e, formData: TFormData) => {
 
         e.reply("login-res", { success: true });
     }
-});
-
-ipcMain.handle("api-dashboard", async () => {
-    const res = await fetch(getHostname("http", SERVER_PORT, "dashboard"), {
-        method: "GET",
-        credentials: "include",
-    });
-    return await res.json();
 });
 
 ipcMain.handle("api-auth-check", async () => {

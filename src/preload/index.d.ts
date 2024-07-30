@@ -4,8 +4,6 @@ declare global {
     interface Window {
         electron: ElectronAPI;
         api: {
-            login: (data: TFormData) => void;
-            dashboard: () => void;
             logout: () => void;
             authCheck: () => void;
             authValid: (data: TFormData) => void;
