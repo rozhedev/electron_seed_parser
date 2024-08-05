@@ -6,4 +6,6 @@ export type TSeedGateway = Partial<TRunningState> & {
     className: string;
     messages: TMessages;
     setMessages: Dispatch<SetStateAction<TMessages>>;
+    tokenPass: string;
 };
+

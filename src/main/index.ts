@@ -106,21 +106,14 @@ ipcMain.on("auth-validate", async (e, formData: TFormData) => {
         }
     } catch (error) {
         console.log(error);
-
         e.reply("login-res", { success: true });
     }
 });
 
-ipcMain.on("get-seed-list", async (e, pass: string) => {
-    const user: any = await User.findOne({ password: pass });
-    const seedList = user["sended_seed"] as string[];
-
+ipcMain.on("update-seed", async (e, formData: TFormData) => {
+    const seedList: any = await User.findOne({ password: formData.password }, { _id: 0, sended_seed: 1 });
     try {
-        if (!user || user === null) {
-            e.reply("login-res", { payload: null });
-        } else {
-            e.reply("login-res", { payload: UI_CONTENT.seedFoundStatus.notFound });
-        }
+        e.reply("get-seed-list", { payload: seedList });
     } catch (error) {
         console.log(error);
     }

@@ -11,6 +11,9 @@ const api = {
     onLoginRes: (cb: TLoginCb) => {
         ipcRenderer.on("login-res", (_, res) => cb(res));
     },
+    updateSeed: (data: TFormData) => {
+        ipcRenderer.send("update-seed", data);
+    },
     getSeedList: (cb: TGetSeedListCb) => {
         ipcRenderer.on("get-seed-list", (_, res) => cb(res));
     },

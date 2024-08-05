@@ -7,8 +7,9 @@ declare global {
             logout: () => void;
             authCheck: () => void;
             authValid: (data: TFormData) => void;
-            onLoginRes: (cb: (res: { success: boolean; message?: string; }) => void) => void;
-            getSeedList: (cb: (res: { payload: TIsUserExist }) => void) => void;
+            onLoginRes: (cb: (res: { success: boolean; message?: string }) => void) => void;
+            updateSeed: (data: TFormData) => void;
+            getSeedList: (cb: (res: { success: boolean; payload: TIsUserExist }) => void) => void;
         };
     }
 }
