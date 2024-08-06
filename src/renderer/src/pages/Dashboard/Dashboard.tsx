@@ -28,6 +28,7 @@ export function Dashboard() {
                     <CheckIndication
                         isRunning={isRunning}
                         setIsRunning={setIsRunning}
+                        tokenPass={pass}
                     />
                     <SeedGateway
                         className={"console mt-4"}

@@ -25,6 +25,11 @@ export type TComputed = { [key: string]: string };
 export type TFormData = {
     password: string;
 };
+
+export type TUpdateSeedData = TFormData & {
+    bool : boolean;
+};
+
 export type TLoginCb = (cb: (res: { success: boolean; message?: string }) => void) => void;
 
 export type TGetSeedListCb = (cb: (res: { payload: TIsUserExist }) => void) => void;

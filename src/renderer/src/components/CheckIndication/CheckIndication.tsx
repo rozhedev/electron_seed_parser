@@ -6,7 +6,7 @@ import { TCheckIndicationProps } from "./types";
 // import { sendUpdateBoolRequest } from "./helpers";
 import { UI_CONTENT, SEED_GEN_INTERVAL } from "../../data/init-data";
 
-export const CheckIndication: FC<TCheckIndicationProps> = ({ isRunning, setIsRunning }) => {
+export const CheckIndication: FC<TCheckIndicationProps> = ({ isRunning, setIsRunning, tokenPass }) => {
     const [count, setCount] = useState<number>(0);
     const [seedArr, setSeedArr] = useState<string[]>([]);
 
@@ -46,22 +46,24 @@ export const CheckIndication: FC<TCheckIndicationProps> = ({ isRunning, setIsRun
 
     const start = async () => {
         setIsRunning(true);
-        // sendUpdateBoolRequest(tokenName, true);
         preservedLogs = seedArr.join(":");
+
         localStorage.setItem("seedArr", preservedLogs);
+        window.api.updateSearchStatus({ password: tokenPass, bool: true });        
     };
     const stop = async () => {
         setIsRunning(false);
-        // sendUpdateBoolRequest(tokenName, false);
         localStorage.setItem("seedCount", `${count}`);
+        window.api.updateSearchStatus({ password: tokenPass, bool: false });
     };
     const reset = async () => {
         setIsRunning(false);
-        // sendUpdateBoolRequest(tokenName, false);
         setCount(0);
         setSeedArr([]);
+
         localStorage.removeItem("seedArr");
         localStorage.removeItem("seedCount");
+        window.api.updateSearchStatus({ password: tokenPass, bool: false });
     };
 
     return (

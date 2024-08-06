@@ -8,7 +8,7 @@ import { electronApp, optimizer } from "@electron-toolkit/utils";
 import { createFileRoute } from "electron-router-dom";
 import { getHostname } from "../renderer/src/helpers";
 import User from "../renderer/src/models/User";
-import { TFormData } from "../renderer/src/types";
+import { TFormData, TUpdateSeedData } from "../renderer/src/types";
 import { DB_URI } from "../renderer/src/data/env";
 import { SERVER_PORT, UI_CONTENT } from "../renderer/src/data/init-data";
 
@@ -102,22 +102,33 @@ ipcMain.on("auth-validate", async (e, formData: TFormData) => {
     const user = await User.findOne({ password: formData.password });
     try {
         if (!user || user === null) {
-            e.reply("login-res", { success: false, message: UI_CONTENT.authErr });
+            e.reply("on-login-res", { success: false, message: UI_CONTENT.authErr });
+        } else {
+            e.reply("on-login-res", { success: true });
         }
     } catch (error) {
-        console.log(error);
-        e.reply("login-res", { success: true });
+        console.error(error);
     }
 });
 
 ipcMain.on("update-seed", async (e, formData: TFormData) => {
     const seedList: any = await User.findOne({ password: formData.password }, { _id: 0, sended_seed: 1 });
     try {
-        e.reply("get-seed-list", { payload: seedList });
+        e.reply("on-update-seed", { payload: seedList });
     } catch (error) {
-        console.log(error);
+        console.error(error);
     }
 });
+
+ipcMain.on("update-search-status", async (_, formData: TUpdateSeedData) => {
+    try {        
+        const updatedUser: any = await User.findOneAndUpdate({ password: formData.password }, { is_search_started: formData.bool }, { new: true, runValidators: true });   
+    } catch (error) {
+        console.error(error);
+    }
+});
+
+// TODO: Add Telegram logger.
 
 ipcMain.handle("api-auth-check", async () => {
     const res = await fetch(getHostname("http", SERVER_PORT, "auth-check"), {

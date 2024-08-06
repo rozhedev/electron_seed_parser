@@ -1,4 +1,5 @@
 import { ElectronAPI } from "@electron-toolkit/preload";
+import { TUpdateSeedData } from "@renderer/types";
 
 declare global {
     interface Window {
@@ -9,7 +10,8 @@ declare global {
             authValid: (data: TFormData) => void;
             onLoginRes: (cb: (res: { success: boolean; message?: string }) => void) => void;
             updateSeed: (data: TFormData) => void;
-            getSeedList: (cb: (res: { success: boolean; payload: TIsUserExist }) => void) => void;
+            onUpdateSeed: (cb: (res: { success: boolean; payload: TIsUserExist }) => void) => void;
+            updateSearchStatus: (data: TUpdateSeedData) => void;
         };
     }
 }

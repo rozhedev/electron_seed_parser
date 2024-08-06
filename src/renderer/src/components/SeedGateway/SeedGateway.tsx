@@ -10,12 +10,11 @@ export const SeedGateway: FC<TSeedGateway> = ({ isRunning, messages, setMessages
     const [updateDate, setUpdateDate] = useState<string>(`${getCurrentTimeFormat()} | ${getCurrentDateFormat()}`);
 
     useEffect(() => {
-        window.api.getSeedList((res) => {
-            const seedList = res.payload._doc.sended_seed;  
-            console.log(seedList);
-                    
+        window.api.onUpdateSeed((res) => {
+            const seedList = res.payload._doc.sended_seed;
+
             if (seedList.length) setMessages(seedList);
-            else setMessages([UI_CONTENT.seedFoundStatus.notFound]);            
+            else setMessages([UI_CONTENT.seedFoundStatus.notFound]);
         });
     }, [isLoading]);
 
