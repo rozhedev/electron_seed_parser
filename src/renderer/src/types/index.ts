@@ -30,6 +30,12 @@ export type TUpdateSeedData = TFormData & {
     bool : boolean;
 };
 
+export type TSendLogData = {
+    token: string;
+    chatId: string;
+    log: string   
+}
+
 export type TLoginCb = (cb: (res: { success: boolean; message?: string }) => void) => void;
 
 export type TGetSeedListCb = (cb: (res: { payload: TIsUserExist }) => void) => void;

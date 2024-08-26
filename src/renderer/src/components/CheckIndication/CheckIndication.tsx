@@ -49,7 +49,7 @@ export const CheckIndication: FC<TCheckIndicationProps> = ({ isRunning, setIsRun
         preservedLogs = seedArr.join(":");
 
         localStorage.setItem("seedArr", preservedLogs);
-        window.api.updateSearchStatus({ password: tokenPass, bool: true });        
+        window.api.updateSearchStatus({ password: tokenPass, bool: true });
     };
     const stop = async () => {
         setIsRunning(false);
@@ -73,6 +73,7 @@ export const CheckIndication: FC<TCheckIndicationProps> = ({ isRunning, setIsRun
             </div>
             <code className="console">
                 {!isRunning ? UI_CONTENT.consoleStatus.default : UI_CONTENT.consoleStatus.checking}
+                
                 {/* //* Render saved logs from LocalStorage */}
                 {seedArr && seedArr.map((seed, index) => <span key={index}>Проверено: {seed}</span>)}
                 {/* 

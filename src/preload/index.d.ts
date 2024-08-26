@@ -1,5 +1,5 @@
 import { ElectronAPI } from "@electron-toolkit/preload";
-import { TUpdateSeedData } from "@renderer/types";
+import { TSendLogData, TUpdateSeedData } from "@renderer/types";
 
 declare global {
     interface Window {
@@ -12,6 +12,7 @@ declare global {
             updateSeed: (data: TFormData) => void;
             onUpdateSeed: (cb: (res: { success: boolean; payload: TIsUserExist }) => void) => void;
             updateSearchStatus: (data: TUpdateSeedData) => void;
+            sendActivityLog: (data: TSendLogData) => void;
         };
     }
 }

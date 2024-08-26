@@ -1,6 +1,6 @@
 import { contextBridge, ipcRenderer } from "electron";
 import { electronAPI } from "@electron-toolkit/preload";
-import { TFormData, TGetSeedListCb, TLoginCb, TUpdateSeedData } from "../renderer/src/types/index";
+import { TFormData, TGetSeedListCb, TLoginCb, TSendLogData, TUpdateSeedData } from "../renderer/src/types/index";
 
 const api = {
     logout: () => ipcRenderer.invoke("api-logout"),
@@ -18,6 +18,9 @@ const api = {
         ipcRenderer.on("on-update-seed", (_, res) => cb(res));
     },
     updateSearchStatus: (data: TUpdateSeedData) => {
+        ipcRenderer.send("update-search-status", data);
+    },
+    sendActivityLog: (data: TSendLogData) => {
         ipcRenderer.send("update-search-status", data);
     },
 };

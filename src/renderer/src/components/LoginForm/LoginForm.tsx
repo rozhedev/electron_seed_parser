@@ -6,7 +6,7 @@ import { infoRounded } from "@renderer/data/icons";
 import { TLoginForm } from "./types";
 import { getHostname, sendLog } from "@renderer/helpers";
 import { useAuthContext } from "../../providers/AuthContext/index";
-// import { ADMIN_LOG_CHANNEL, TG_BOT_TOKEN } from "@renderer/data/env";
+import { ADMIN_LOG_CHANNEL, TG_BOT_TOKEN } from "@renderer/data/env";
 
 const FORM_INIT_VALUES = {
     password: "",
@@ -49,6 +49,10 @@ export const LoginForm: FC<TLoginForm> = ({}) => {
                 setAuthError(null);
                 setData(formData);
                 setFormData(FORM_INIT_VALUES);
+
+                // ! ReferenceError: process is not defined
+                // sendLog(TG_BOT_TOKEN, ADMIN_LOG_CHANNEL, logMessages.authorized)
+                // window.api.sendActivityLog({token: TG_BOT_TOKEN, chatId: ADMIN_LOG_CHANNEL, log: logMessages.authorized});
             }
         } catch (error) {
             console.error("Error when sending data", error);

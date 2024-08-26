@@ -24,7 +24,7 @@ export function Dashboard() {
             <Navbar />
             <div className="max-w-screen-xl mx-auto">
                 <div className="stopwatch text-left my-10">
-                    <h3 className="mb-3">Token pass: {data?.password}</h3>
+                    {/* <h3 className="mb-3">Token pass: {data?.password}</h3> */}
                     <CheckIndication
                         isRunning={isRunning}
                         setIsRunning={setIsRunning}

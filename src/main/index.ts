@@ -6,9 +6,9 @@ import cors from "cors";
 
 import { electronApp, optimizer } from "@electron-toolkit/utils";
 import { createFileRoute } from "electron-router-dom";
-import { getHostname } from "../renderer/src/helpers";
+import { getHostname, sendLog } from "../renderer/src/helpers";
 import User from "../renderer/src/models/User";
-import { TFormData, TUpdateSeedData } from "../renderer/src/types";
+import { TFormData, TSendLogData, TUpdateSeedData } from "../renderer/src/types";
 import { DB_URI } from "../renderer/src/data/env";
 import { SERVER_PORT, UI_CONTENT } from "../renderer/src/data/init-data";
 
@@ -120,15 +120,21 @@ ipcMain.on("update-seed", async (e, formData: TFormData) => {
     }
 });
 
-ipcMain.on("update-search-status", async (_, formData: TUpdateSeedData) => {
+ipcMain.on("update-search-status", async (_, data: TUpdateSeedData) => {
     try {        
-        const updatedUser: any = await User.findOneAndUpdate({ password: formData.password }, { is_search_started: formData.bool }, { new: true, runValidators: true });   
+        const updatedUser: any = await User.findOneAndUpdate({ password: data.password }, { is_search_started: data.bool }, { new: true, runValidators: true });   
     } catch (error) {
         console.error(error);
     }
 });
 
-// TODO: Add Telegram logger.
+// ipcMain.on("send-log", async (_, data: TSendLogData) => {
+//     try {
+//         sendLog(data.token, data.chatId, data.log)
+//     } catch (error) {
+//         console.error(error);
+//     }
+// })
 
 ipcMain.handle("api-auth-check", async () => {
     const res = await fetch(getHostname("http", SERVER_PORT, "auth-check"), {
