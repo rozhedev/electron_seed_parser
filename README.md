@@ -2,6 +2,10 @@
 
 An Electron application with React and TypeScript
 
+Working with MongoDB. For correct work use DB structure from src/renderer/src/models/User.ts
+
+New tokens created inside DB or via external telegram bot
+
 ## Recommended IDE Setup
 
 - [VSCode](https://code.visualstudio.com/) + [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) + [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
