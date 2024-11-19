@@ -13,6 +13,8 @@
         "src/renderer/src/providers/**/*",
     ],
     "compilerOptions": {
+        "noUnusedLocals": false,
+        "noUnusedParameters": false,
         "composite": true,
         "jsx": "react-jsx",
         "baseUrl": ".",

@@ -3,7 +3,7 @@ import { TUserProjection } from "../types";
 export const TOKEN_LENGHT: number = 12;
 export const SEED_GEN_INTERVAL: number = 400;
 export const CLIENT_PORT: number = 5173;
-export const SERVER_PORT: number = 5000;
+export const SERVER_PORT: number = 5001;
 export const REVALIDATE_INTERVAL: number = 5000;
 
 // * Sended seed projection
