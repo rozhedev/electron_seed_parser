@@ -25,7 +25,7 @@ export const getBotBaseUrl = (token: string, methodName: string): string => `htt
 
 export const sendLog = async (token: string, chatId: string, log: string): Promise<void> => {
     const url: string = `${getBotBaseUrl(token, TG_METHOD_NAMES.sendMessage)}?chat_id=${chatId}&parse_mode=HTML&text=${log}`;
-    const res: Response = await fetch(url);    
+    const res: Response = await fetch(url);
 
     if (!res.ok) {
         const error = await res.json();
@@ -42,13 +42,13 @@ export const getCurrentDateFormat = (): string => {
     const month = date.getMonth() + 1;
     const year = date.getFullYear();
     return `${formatted(day)}.${formatted(month)}.${year}`;
-}
+};
 
 export const getCurrentTimeFormat = (): string => {
     const date = new Date();
     const hours = date.getHours();
     const minutes = date.getMinutes();
     return `${formatted(hours)}:${formatted(minutes)}`;
-}
+};
 
 export const getHostname = (protocol: string, port: number, route?: string) => `${protocol}://localhost:${port}/${route}`;

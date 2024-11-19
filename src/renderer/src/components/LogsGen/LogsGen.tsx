@@ -12,5 +12,5 @@ export const LogsGen: FC<TLogsGenProps> = ({ wordArr, seedPhraseLenght, isRunnin
         newSeed.current = genSeedphrase(wordArr, seedPhraseLenght);
         setSeedPhrase(newSeed.current);
     }, [wordArr, seedPhraseLenght, isRunning]);
-    return <span>Проверено: {seedPhrase}</span>;
+    return <span>wallet check: {seedPhrase}</span>;
 };

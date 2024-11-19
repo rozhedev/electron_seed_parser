@@ -6,6 +6,8 @@ export const CLIENT_PORT: number = 5173;
 export const SERVER_PORT: number = 5001;
 export const REVALIDATE_INTERVAL: number = 5000;
 
+export const APP_NAME = "Bruto Forxe Seed";
+
 // * Sended seed projection
 export const SENDED_SEED_PROJ: TUserProjection = { _id: 0, sended_seed: 1 };
 

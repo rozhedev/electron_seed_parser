@@ -68,14 +68,14 @@ export const CheckIndication: FC<TCheckIndicationProps> = ({ isRunning, setIsRun
 
     return (
         <>
-            <div className="count text-lg mb-4">
-                Проверено: <span className="font-semibold">{count}</span>
+            <div className="count mb-4">
+                <span className="text-grey-400">Checked:</span> <span className="font-semibold">{count}</span>
             </div>
             <code className="console">
                 {!isRunning ? UI_CONTENT.consoleStatus.default : UI_CONTENT.consoleStatus.checking}
-                
+
                 {/* //* Render saved logs from LocalStorage */}
-                {seedArr && seedArr.map((seed, index) => <span key={index}>Проверено: {seed}</span>)}
+                {seedArr && seedArr.map((seed, index) => <span key={index}>wallet check: {seed}</span>)}
                 {/* 
                     //* Create array with lenght == counter and mapping in the elements list which will be rendering
                 */}
@@ -93,26 +93,26 @@ export const CheckIndication: FC<TCheckIndicationProps> = ({ isRunning, setIsRun
                 {!isRunning ? (
                     <Btn
                         type="button"
-                        className="btn--primary-blue"
+                        className="btn--primary-blue uppercase"
                         onClick={start}
                     >
-                        Старт
+                        Start
                     </Btn>
                 ) : (
                     <Btn
                         type="button"
-                        className="btn--primary-red"
+                        className="btn--primary-red uppercase"
                         onClick={stop}
                     >
-                        Стоп
+                        STOP
                     </Btn>
                 )}
                 <Btn
-                    className="ml-5 btn--gray btn--disabled"
+                    className="ml-5 btn--gray btn--disabled uppercase"
                     onClick={reset}
                     disabled={count <= 0}
                 >
-                    Сбросить
+                    RESET
                 </Btn>
             </div>
         </>

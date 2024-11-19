@@ -1,5 +1,6 @@
 {
-  "name": "unity_seed_parser",
+  "name": "bruto_forxe_seed_parser",
+  "productName": "Bruto Forxe Seed",
   "version": "1.3.2",
   "description": "Seed parser for search wallets",
   "main": "./out/main/index.js",

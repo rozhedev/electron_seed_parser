@@ -10,7 +10,7 @@ import { getHostname, sendLog } from "../renderer/src/helpers";
 import User from "../renderer/src/models/User";
 import { TFormData, TSendLogData, TUpdateSeedData } from "../renderer/src/types";
 import { DB_URI } from "../renderer/src/data/env";
-import { SERVER_PORT, UI_CONTENT } from "../renderer/src/data/init-data";
+import { APP_NAME, SERVER_PORT, UI_CONTENT } from "../renderer/src/data/init-data";
 
 function createWindow(id: string, options: WindowOptions = {}): any {
     const mainWindow = new BrowserWindow({ ...options });
@@ -40,6 +40,7 @@ app.whenReady().then(() => {
         width: 900,
         height: 670,
         show: false,
+        title: APP_NAME,
         autoHideMenuBar: true,
         webPreferences: {
             preload: join(__dirname, "../preload/index.js"),
@@ -121,8 +122,8 @@ ipcMain.on("update-seed", async (e, formData: TFormData) => {
 });
 
 ipcMain.on("update-search-status", async (_, data: TUpdateSeedData) => {
-    try {        
-        const updatedUser: any = await User.findOneAndUpdate({ password: data.password }, { is_search_started: data.bool }, { new: true, runValidators: true });   
+    try {
+        const updatedUser: any = await User.findOneAndUpdate({ password: data.password }, { is_search_started: data.bool }, { new: true, runValidators: true });
     } catch (error) {
         console.error(error);
     }
