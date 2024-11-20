@@ -33,10 +33,15 @@ export const SeedGateway: FC<TSeedGateway> = ({ isRunning, messages, setMessages
     return (
         <div>
             <div className="mt-5">
-                {eng_str__ui.lastChecked} {updateDate}
+                <span className="text-gray-600">{eng_str__ui.lastChecked}</span>
+                <span className="font-medium">{updateDate}</span>
             </div>
+            {/* <div className="mb-4">
+                <span className="text-gray-600">{eng_str__ui.validSeedFinded}</span>
+                <span className="font-medium">{updateDate.length}</span>
+            </div> */}
             <code className={className}>
-                <span>{eng_str__ui.validSeedFinded}</span>
+                <span>{eng_str__ui.valitSeedAdresses}</span>
                 {messages.map((msg: any, index: number) => (
                     <span key={index}>{msg}</span>
                 ))}

@@ -37,7 +37,9 @@ export const STRINGS_ENG = {
         logout: "Log out",
         openMenu: "Open main menu",
         lastChecked: "Last checked:",
-        validSeedFinded: "Valid seed phrases found:",
+        // validSeedFinded: "Valid seed phrases found:",
+        validSeedFinded: "Found:",
+        valitSeedAdresses: "Valid adresses:",
         checked: "Checked:"
     },
     eng_str__login: {

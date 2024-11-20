@@ -98,7 +98,7 @@ export const LoginForm: FC<TLoginForm> = ({}) => {
             <div>
                 <button
                     type="submit"
-                    className="btn--auth"
+                    className="btn btn--auth"
                     disabled={isLoading}
                 >
                     {isLoading ? eng_str__btn.updating : eng_str__btn.login}

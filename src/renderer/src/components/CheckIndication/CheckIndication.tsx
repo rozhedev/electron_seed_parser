@@ -74,7 +74,7 @@ export const CheckIndication: FC<TCheckIndicationProps> = ({ isRunning, setIsRun
                 <span className="text-grey-100">{eng_str__ui.checked}</span> <span className="font-semibold">{count}</span>
             </div>
             <code className="console">
-                {/* {!isRunning ? eng_str__consoleStatus.default : eng_str__consoleStatus.checking} */}
+                {!isRunning ? eng_str__consoleStatus.default : eng_str__consoleStatus.checking}
 
                 {/* //* Render saved logs from LocalStorage */}
                 {seedArr &&
