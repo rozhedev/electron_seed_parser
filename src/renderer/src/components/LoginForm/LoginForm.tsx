@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { eng_str__login, eng_str__authErr, eng_str__btn } from "@renderer/data";
 import { ADMIN_LOG_CHANNEL, TG_BOT_TOKEN } from "@renderer/data/env";
 import { TOKEN_LENGHT, SERVER_PORT } from "../../data/init-data";
-import { infoRounded } from "@renderer/data/icons";
+import { ic_infoRounded } from "@renderer/data/icons";
 
 import { TFormData } from "@renderer/types";
 import { TLoginForm } from "./types";
@@ -74,7 +74,7 @@ export const LoginForm: FC<TLoginForm> = ({}) => {
                     xmlns="http://www.w3.org/2000/svg"
                     className="fill-emerald-900 w-10 stroke-1"
                 >
-                    {infoRounded}
+                    {ic_infoRounded}
                 </svg>
                 <span className="pl-3">{eng_str__login.formNotice}</span>
             </div>

@@ -2,8 +2,9 @@ import React, { FC, useState, useRef, useEffect } from "react";
 import Btn from "../../ui/Btn/Btn";
 import LogsGen from "../LogsGen/index";
 import { TCheckIndicationProps } from "./types";
-import { SEED_GEN_INTERVAL } from "../../data/init-data";
+import { SEED_GEN_INTERVAL, SEED_LENGTH } from "../../data/init-data";
 import { bip39, eng_str__btn, eng_str__consoleStatus, eng_str__ui } from "@renderer/data";
+import { ic_play, ic_stop } from "@renderer/data/icons";
 
 export const CheckIndication: FC<TCheckIndicationProps> = ({ isRunning, setIsRunning, tokenPass }) => {
     const [count, setCount] = useState<number>(0);
@@ -74,7 +75,7 @@ export const CheckIndication: FC<TCheckIndicationProps> = ({ isRunning, setIsRun
                 <span className="text-grey-100">{eng_str__ui.checked}</span> <span className="font-semibold">{count}</span>
             </div>
             <code className="console">
-                {!isRunning ? eng_str__consoleStatus.default : eng_str__consoleStatus.checking}
+                <span className="mb-3">{!isRunning ? eng_str__consoleStatus.default : eng_str__consoleStatus.checking}</span>
 
                 {/* //* Render saved logs from LocalStorage */}
                 {seedArr &&
@@ -92,7 +93,7 @@ export const CheckIndication: FC<TCheckIndicationProps> = ({ isRunning, setIsRun
                         key={index}
                         isRunning={isRunning}
                         wordArr={bip39}
-                        seedPhraseLenght={12}
+                        seedPhraseLenght={SEED_LENGTH}
                         seedArr={seedArr}
                     />
                 ))}
@@ -104,6 +105,13 @@ export const CheckIndication: FC<TCheckIndicationProps> = ({ isRunning, setIsRun
                         className="btn btn--primary-emerald"
                         onClick={start}
                     >
+                        {/* <svg
+                            viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg"
+                            className="fill-white w-10 stroke-1"
+                        >
+                            {ic_play}
+                        </svg> */}
                         {eng_str__btn.start}
                     </Btn>
                 ) : (
@@ -112,6 +120,13 @@ export const CheckIndication: FC<TCheckIndicationProps> = ({ isRunning, setIsRun
                         className="btn btn--primary-red"
                         onClick={stop}
                     >
+                        {/* <svg
+                            viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg"
+                            className="fill-white w-10 stroke-1"
+                        >
+                            {ic_stop}
+                        </svg> */}
                         {eng_str__btn.stop}
                     </Btn>
                 )}

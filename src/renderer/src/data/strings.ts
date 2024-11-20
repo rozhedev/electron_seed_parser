@@ -1,3 +1,5 @@
+import { SEED_LENGTH } from "./init-data";
+
 export const STRINGS_RU = {
     ru_str__ui: {
         appName: "Bruto Forxe Seed",
@@ -9,7 +11,7 @@ export const STRINGS_RU = {
     },
     ru_str__login: {
         title: "Введите токен для входа",
-        formNotice: "Токен должен состоять из 12 символов, только цифры и маленькие буквы",
+        formNotice: `Токен должен состоять из ${SEED_LENGTH} символов, только цифры и маленькие буквы`,
         tokenPlaceholder: "Ваш токен",
     },
     ru_str__consoleStatus: {
@@ -36,19 +38,19 @@ export const STRINGS_ENG = {
         dashboardTitle: "Dashboard",
         logout: "Log out",
         openMenu: "Open main menu",
-        lastChecked: "Last checked:",
-        // validSeedFinded: "Valid seed phrases found:",
-        validSeedFinded: "Found:",
-        valitSeedAdresses: "Valid adresses:",
+        lastChecked: "Last checked: ",
+        // validSeedFinded: "Valid seed phrases found: ",
+        validSeedFinded: "Found: ",
+        valitSeedAdresses: "Valid adresses: ",
         checked: "Checked:"
     },
     eng_str__login: {
         title: "Enter your login token",
-        formNotice: "The token must consist of 12 characters, only numbers and lowercase letters",
+        formNotice: `The token must consist of ${SEED_LENGTH} characters, only numbers and lowercase letters`,
         tokenPlaceholder: "Your token",
     },
     eng_str__consoleStatus: {
-        default: "Start checking",
+        default: "Start checking:",
         checking: "Searching addresses...",
         checkLabel: "wallet check:"
     },
