@@ -38,6 +38,7 @@ export const STRINGS_ENG = {
         openMenu: "Open main menu",
         lastChecked: "Last checked:",
         validSeedFinded: "Valid seed phrases found:",
+        checked: "Checked:"
     },
     eng_str__login: {
         title: "Enter your login token",
@@ -47,8 +48,12 @@ export const STRINGS_ENG = {
     eng_str__consoleStatus: {
         default: "Start checking",
         checking: "Searching addresses...",
+        checkLabel: "wallet check:"
     },
     eng_str__btn: {
+        start: "Start",
+        stop: "Stop",
+        reset: "Reset",
         seedUpdate: "Update status",
         updating: "Updating...",
 

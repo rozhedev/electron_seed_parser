@@ -5,23 +5,23 @@
 }
 
 .btn {
-    @apply text-lg py-2 px-4 cursor-pointer rounded-lg text-white outline outline-2 transition-all;
+    @apply text-sm py-3 px-4 font-medium cursor-pointer rounded-lg text-white outline outline-2 transition-all tracking-wide uppercase;
 }
 
 .btn--primary-emerald {
-    @apply bg-emerald-700 border-2 border-emerald-800 hover:bg-emerald-600 hover:border-emerald-700;
+    @apply bg-emerald-700 hover:bg-emerald-600;
 }
 
 .btn--primary-red {
-    @apply bg-red-700 border-2 border-red-800 hover:bg-red-600 hover:border-red-700;
+    @apply bg-red-700  hover:bg-red-600;
 }
 
 .btn--gray {
-    @apply bg-gray-800 border-2 border-gray-900 hover:bg-gray-700 hover:border-gray-800;
+    @apply bg-gray-800 border-gray-900 hover:bg-gray-700;
 }
 
 .btn--disabled {
-    @apply disabled:bg-gray-600 disabled:border-2 disabled:border-gray-600 disabled:cursor-not-allowed;
+    @apply disabled:bg-gray-600 disabled:cursor-not-allowed;
 }
 
 .burger-btn {
@@ -29,11 +29,11 @@
 }
 
 .btn--auth {
-    @apply flex w-full justify-center rounded-lg bg-emerald-700 px-3 py-1.5 text-base font-semibold leading-6 text-white shadow-lg hover:bg-emerald-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-600 disabled:bg-gray-600;
+    @apply flex w-full justify-center tracking-wide rounded-lg bg-emerald-700 px-4 py-3 font-medium leading-6 text-white shadow-lg hover:bg-emerald-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-600 disabled:bg-gray-600 uppercase;
 }
 
 .console {
-    @apply sm:w-full md:w-8/12 max-h-96 overflow-y-scroll mb-5 p-3 flex flex-col rounded-xl bg-gray-100 text-black;
+    @apply sm:w-full md:w-8/12 max-h-52 overflow-y-scroll text-sm mb-5 p-3 flex flex-col rounded-xl bg-gray-100 text-black;
 }
 
 .link {

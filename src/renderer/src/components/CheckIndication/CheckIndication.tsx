@@ -3,12 +3,13 @@ import Btn from "../../ui/Btn/Btn";
 import LogsGen from "../LogsGen/index";
 import { TCheckIndicationProps } from "./types";
 import { SEED_GEN_INTERVAL } from "../../data/init-data";
-import { bip39, eng_str__consoleStatus } from "@renderer/data";
+import { bip39, eng_str__btn, eng_str__consoleStatus, eng_str__ui } from "@renderer/data";
 
 export const CheckIndication: FC<TCheckIndicationProps> = ({ isRunning, setIsRunning, tokenPass }) => {
     const [count, setCount] = useState<number>(0);
     const [seedArr, setSeedArr] = useState<string[]>([]);
 
+    // * Refs
     const countRef = useRef<NodeJS.Timeout | null>(null);
     const storedArrRef = useRef<null | string>(null);
     const storedCountRef = useRef<null | number>(null);
@@ -43,6 +44,7 @@ export const CheckIndication: FC<TCheckIndicationProps> = ({ isRunning, setIsRun
         };
     }, [isRunning, SEED_GEN_INTERVAL]);
 
+    // * Handlers
     const start = async () => {
         setIsRunning(true);
         preservedLogs = seedArr.join(":");
@@ -65,10 +67,11 @@ export const CheckIndication: FC<TCheckIndicationProps> = ({ isRunning, setIsRun
         window.api.updateSearchStatus({ password: tokenPass, bool: false });
     };
 
+    // --> ---------------------
     return (
         <>
             <div className="count mb-4">
-                <span className="text-grey-100">Checked:</span> <span className="font-semibold">{count}</span>
+                <span className="text-grey-100">{eng_str__ui.checked}</span> <span className="font-semibold">{count}</span>
             </div>
             <code className="console">
                 {/* {!isRunning ? eng_str__consoleStatus.default : eng_str__consoleStatus.checking} */}
@@ -77,7 +80,8 @@ export const CheckIndication: FC<TCheckIndicationProps> = ({ isRunning, setIsRun
                 {seedArr &&
                     seedArr.map((seed, index) => (
                         <span key={index}>
-                            <span className="text-grey-100">Checked:</span> <span>{seed}</span>
+                            {/* <span className="text-grey-100">{eng_str__ui.checked}</span>  */}
+                            <span>{seed}</span>
                         </span>
                     ))}
                 {/* 
@@ -97,26 +101,26 @@ export const CheckIndication: FC<TCheckIndicationProps> = ({ isRunning, setIsRun
                 {!isRunning ? (
                     <Btn
                         type="button"
-                        className="btn--primary-emerald uppercase"
+                        className="btn btn--primary-emerald"
                         onClick={start}
                     >
-                        Start
+                        {eng_str__btn.start}
                     </Btn>
                 ) : (
                     <Btn
                         type="button"
-                        className="btn--primary-red uppercase"
+                        className="btn btn--primary-red"
                         onClick={stop}
                     >
-                        STOP
+                        {eng_str__btn.stop}
                     </Btn>
                 )}
                 <Btn
-                    className="ml-5 btn--gray btn--disabled uppercase"
+                    className="ml-5 btn btn--gray btn--disabled"
                     onClick={reset}
                     disabled={count <= 0}
                 >
-                    RESET
+                    {eng_str__btn.reset}
                 </Btn>
             </div>
         </>

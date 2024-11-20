@@ -31,7 +31,7 @@ export function Dashboard() {
                         tokenPass={pass}
                     />
                     <SeedGateway
-                        className={"console mt-4"}
+                        className={"console mt-3"}
                         messages={messages}
                         setMessages={setMessages}
                         isRunning={isRunning}
