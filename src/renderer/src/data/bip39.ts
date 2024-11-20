@@ -1,4 +1,4 @@
-export const bip39: string[] = [
+const bip39: string[] = [
     "abandon",
     "ability",
     "able",
@@ -2048,3 +2048,5 @@ export const bip39: string[] = [
     "zone",
     "zoo",
 ];
+
+export default bip39;

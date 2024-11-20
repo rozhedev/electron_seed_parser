@@ -1,10 +1,9 @@
 import React, { FC, useState, useRef, useEffect } from "react";
 import Btn from "../../ui/Btn/Btn";
 import LogsGen from "../LogsGen/index";
-import { bip39 } from "../../data/bip39";
 import { TCheckIndicationProps } from "./types";
-// import { sendUpdateBoolRequest } from "./helpers";
-import { UI_CONTENT, SEED_GEN_INTERVAL } from "../../data/init-data";
+import { SEED_GEN_INTERVAL } from "../../data/init-data";
+import { bip39, eng_str__consoleStatus } from "@renderer/data";
 
 export const CheckIndication: FC<TCheckIndicationProps> = ({ isRunning, setIsRunning, tokenPass }) => {
     const [count, setCount] = useState<number>(0);
@@ -72,7 +71,7 @@ export const CheckIndication: FC<TCheckIndicationProps> = ({ isRunning, setIsRun
                 <span className="text-grey-400">Checked:</span> <span className="font-semibold">{count}</span>
             </div>
             <code className="console">
-                {!isRunning ? UI_CONTENT.consoleStatus.default : UI_CONTENT.consoleStatus.checking}
+                {!isRunning ? eng_str__consoleStatus.default : eng_str__consoleStatus.checking}
 
                 {/* //* Render saved logs from LocalStorage */}
                 {seedArr && seedArr.map((seed, index) => <span key={index}>wallet check: {seed}</span>)}

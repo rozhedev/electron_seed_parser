@@ -24,19 +24,13 @@ export type TRunningState = {
 
 export type TComputed = { [key: string]: string };
 
-export type TFormData = {
-    password: string;
-};
+export type TFormData = Record<"password", string>;
 
 export type TUpdateSeedData = TFormData & {
     bool: boolean;
 };
 
-export type TSendLogData = {
-    token: string;
-    chatId: string;
-    log: string;
-};
+export type TSendLogData = Record<"token" | "chatId" | "log", string>;
 
 export type TLoginCb = (cb: (res: { success: boolean; message?: string }) => void) => void;
 

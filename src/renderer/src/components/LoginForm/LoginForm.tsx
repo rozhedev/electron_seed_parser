@@ -1,12 +1,15 @@
 import React, { FormEvent, ChangeEvent, FC, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { UI_CONTENT, logMessages, TOKEN_LENGHT, SERVER_PORT } from "../../data/init-data";
-import { TFormData } from "@renderer/types";
+
+import { eng_str__login, eng_str__authErr, eng_str__btn } from "@renderer/data";
+import { ADMIN_LOG_CHANNEL, TG_BOT_TOKEN } from "@renderer/data/env";
+import { TOKEN_LENGHT, SERVER_PORT } from "../../data/init-data";
 import { infoRounded } from "@renderer/data/icons";
+
+import { TFormData } from "@renderer/types";
 import { TLoginForm } from "./types";
 import { getHostname, sendLog } from "@renderer/helpers";
-import { useAuthContext } from "../../providers/AuthContext/index";
-import { ADMIN_LOG_CHANNEL, TG_BOT_TOKEN } from "@renderer/data/env";
+import { useAuthContext } from "../../providers/AuthContext";
 
 const FORM_INIT_VALUES = {
     password: "",
@@ -73,7 +76,7 @@ export const LoginForm: FC<TLoginForm> = ({}) => {
                 >
                     {infoRounded}
                 </svg>
-                <span className="pl-3">Токен должен состоять из 12 символов, только цифры и маленькие буквы</span>
+                <span className="pl-3">{eng_str__login.formNotice}</span>
             </div>
             <div>
                 <div>
@@ -83,14 +86,14 @@ export const LoginForm: FC<TLoginForm> = ({}) => {
                         type="text"
                         required
                         className="block w-full rounded-lg border-0 p-3 text-gray-900 shadow-md ring-1 ring-inset ring-gray-300 placeholder:text-gray-500 focus:outline-2 focus:outline-indigo-600 focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                        placeholder="Токен"
+                        placeholder={eng_str__login.tokenPlaceholder}
                         minLength={TOKEN_LENGHT}
                         maxLength={TOKEN_LENGHT}
                         onChange={(e: ChangeEvent<HTMLInputElement>) => setFormData({ ...formData, password: e.target.value })}
                         value={formData.password}
                     />
                 </div>
-                {authError && <small className="text-red-600 font-semibold">{UI_CONTENT.authErr.invalidToken}</small>}
+                {authError && <small className="text-red-600 font-semibold">{eng_str__authErr.invalidToken}</small>}
             </div>
             <div>
                 <button
@@ -98,7 +101,7 @@ export const LoginForm: FC<TLoginForm> = ({}) => {
                     className="btn--auth"
                     disabled={isLoading}
                 >
-                    {isLoading ? UI_CONTENT.loginBtn.loading : UI_CONTENT.loginBtn.default}
+                    {isLoading ? eng_str__btn.updating : eng_str__btn.login}
                 </button>
             </div>
         </form>

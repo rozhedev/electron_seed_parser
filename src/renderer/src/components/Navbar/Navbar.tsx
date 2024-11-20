@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { SERVER_PORT } from "@renderer/data/init-data";
 import { getHostname } from "@renderer/helpers";
 import { TNavbar } from "./types";
+import { eng_str__ui } from "@renderer/data";
 
 export const Navbar: FC<TNavbar> = ({}) => {
     const navigate = useNavigate();
@@ -22,7 +23,7 @@ export const Navbar: FC<TNavbar> = ({}) => {
         <nav className="border-gray-200 bg-gray-50 dark:bg-gray-800 dark:border-gray-700">
             <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4 md:border-b-2 md:border-gray-200">
                 <div className="flex items-center space-x-3 rtl:space-x-reverse">
-                    <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">SeedSearch</span>
+                    <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">{eng_str__ui.appName}</span>
                 </div>
                 <button
                     onClick={() => setIsOpen(!isOpen)}
@@ -32,7 +33,7 @@ export const Navbar: FC<TNavbar> = ({}) => {
                     aria-controls="navbar-solid-bg"
                     aria-expanded="false"
                 >
-                    <span className="sr-only">Open main menu</span>
+                    <span className="sr-only">{eng_str__ui.openMenu}</span>
                     <svg
                         className="w-5 h-5"
                         aria-hidden="true"
@@ -60,7 +61,7 @@ export const Navbar: FC<TNavbar> = ({}) => {
                                 className="link .navlink--red"
                                 onClick={handleLogout}
                             >
-                                Выйти
+                                {eng_str__ui.logout}
                             </Link>
                         </li>
                     </ul>

@@ -2,7 +2,7 @@ import React, { FC, useEffect, useState } from "react";
 import Btn from "../../ui/Btn/Btn";
 import { TSeedGateway } from "./types";
 import { getCurrentDateFormat, getCurrentTimeFormat } from "../../helpers";
-import { UI_CONTENT } from "../../data/init-data";
+import { eng_str__btn, eng_str__seedStatus, eng_str__ui } from "@renderer/data";
 
 export const SeedGateway: FC<TSeedGateway> = ({ isRunning, messages, setMessages, className, tokenPass }) => {
     // * Rewrite sended seed logic
@@ -14,7 +14,7 @@ export const SeedGateway: FC<TSeedGateway> = ({ isRunning, messages, setMessages
             const seedList = res.payload._doc.sended_seed;
 
             if (seedList.length) setMessages(seedList);
-            else setMessages([UI_CONTENT.seedFoundStatus.notFound]);
+            else setMessages([eng_str__seedStatus.notFound]);
         });
     }, [isLoading]);
 
@@ -32,9 +32,9 @@ export const SeedGateway: FC<TSeedGateway> = ({ isRunning, messages, setMessages
 
     return (
         <div>
-            <div className="mt-9">Дата последней проверки: {updateDate}</div>
+            <div className="mt-9">{eng_str__ui.lastChecked} {updateDate}</div>
             <code className={className}>
-                <span>Найдена валидная seed-фраза:</span>
+                <span>{eng_str__ui.validSeedFinded}</span>
                 {messages.map((msg: any, index: number) => (
                     <span key={index}>{msg}</span>
                 ))}
@@ -45,7 +45,7 @@ export const SeedGateway: FC<TSeedGateway> = ({ isRunning, messages, setMessages
                 className={`btn ${isRunning ? "btn--primary-blue" : "btn--disabled"}`}
                 onClick={handleUpdateBtnClick}
             >
-                {isLoading ? UI_CONTENT.seedUpdateBtn.loading : UI_CONTENT.seedUpdateBtn.default}
+                {isLoading ? eng_str__btn.updating : eng_str__btn.seedUpdate}
             </Btn>
         </div>
     );

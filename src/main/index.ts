@@ -10,7 +10,8 @@ import { getHostname, sendLog } from "../renderer/src/helpers";
 import User from "../renderer/src/models/User";
 import { TFormData, TSendLogData, TUpdateSeedData } from "../renderer/src/types";
 import { DB_URI } from "../renderer/src/data/env";
-import { APP_NAME, SERVER_PORT, UI_CONTENT } from "../renderer/src/data/init-data";
+import { SERVER_PORT } from "../renderer/src/data/init-data";
+import { eng_str__authErr, eng_str__ui } from "../renderer/src/data";
 
 function createWindow(id: string, options: WindowOptions = {}): any {
     const mainWindow = new BrowserWindow({ ...options });
@@ -40,7 +41,7 @@ app.whenReady().then(() => {
         width: 900,
         height: 670,
         show: false,
-        title: APP_NAME,
+        title: eng_str__ui.appName,
         autoHideMenuBar: true,
         webPreferences: {
             preload: join(__dirname, "../preload/index.js"),
@@ -72,7 +73,7 @@ app.whenReady().then(() => {
             // * Don't change checking order
             const user = await User.findOne({ password });
             if (!user || user === null) {
-                return res.status(401).send(UI_CONTENT.authErr);
+                return res.status(401).send(eng_str__authErr.invalidToken);
             }
 
             res.status(200).send("Login succesful");
@@ -103,7 +104,7 @@ ipcMain.on("auth-validate", async (e, formData: TFormData) => {
     const user = await User.findOne({ password: formData.password });
     try {
         if (!user || user === null) {
-            e.reply("on-login-res", { success: false, message: UI_CONTENT.authErr });
+            e.reply("on-login-res", { success: false, message: eng_str__authErr.invalidToken });
         } else {
             e.reply("on-login-res", { success: true });
         }
