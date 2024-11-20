@@ -32,7 +32,9 @@ export const SeedGateway: FC<TSeedGateway> = ({ isRunning, messages, setMessages
 
     return (
         <div>
-            <div className="mt-9">{eng_str__ui.lastChecked} {updateDate}</div>
+            <div className="mt-5">
+                {eng_str__ui.lastChecked} {updateDate}
+            </div>
             <code className={className}>
                 <span>{eng_str__ui.validSeedFinded}</span>
                 {messages.map((msg: any, index: number) => (
@@ -42,7 +44,7 @@ export const SeedGateway: FC<TSeedGateway> = ({ isRunning, messages, setMessages
             <Btn
                 type="button"
                 disabled={!isRunning}
-                className={`btn ${isRunning ? "btn--primary-blue" : "btn--disabled"}`}
+                className={`btn ${isRunning ? "btn--primary-emerald" : "btn--disabled"}`}
                 onClick={handleUpdateBtnClick}
             >
                 {isLoading ? eng_str__btn.updating : eng_str__btn.seedUpdate}

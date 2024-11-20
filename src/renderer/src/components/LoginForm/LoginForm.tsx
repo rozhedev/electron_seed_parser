@@ -68,11 +68,11 @@ export const LoginForm: FC<TLoginForm> = ({}) => {
             method="POST"
             onSubmit={handleSubmit}
         >
-            <div className="bg-indigo-100 flex flex-1 items-center rounded-lg px-3 py-2 text-sm text-indigo-900">
+            <div className="bg-emerald-50 flex flex-1 items-center rounded-lg px-3 py-2 text-sm text-emerald-900">
                 <svg
                     viewBox="0 0 24 24"
                     xmlns="http://www.w3.org/2000/svg"
-                    className="fill-indigo-900 w-10 stroke-1"
+                    className="fill-emerald-900 w-10 stroke-1"
                 >
                     {infoRounded}
                 </svg>
@@ -85,7 +85,7 @@ export const LoginForm: FC<TLoginForm> = ({}) => {
                         name="password"
                         type="text"
                         required
-                        className="block w-full rounded-lg border-0 p-3 text-gray-900 shadow-md ring-1 ring-inset ring-gray-300 placeholder:text-gray-500 focus:outline-2 focus:outline-indigo-600 focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                        className="block w-full rounded-lg border-0 p-3 text-gray-900 shadow-md ring-1 ring-inset ring-gray-300 placeholder:text-gray-500 focus:outline-2 focus:outline-emerald-600 focus:ring-emerald-600 sm:text-sm sm:leading-6"
                         placeholder={eng_str__login.tokenPlaceholder}
                         minLength={TOKEN_LENGHT}
                         maxLength={TOKEN_LENGHT}

@@ -1,5 +1,5 @@
 import { app, shell, BrowserWindow, BrowserWindowConstructorOptions as WindowOptions, ipcMain } from "electron";
-import { join } from "path";
+import path, { join } from "path";
 import mongoose from "mongoose";
 import express from "express";
 import cors from "cors";
@@ -11,7 +11,7 @@ import User from "../renderer/src/models/User";
 import { TFormData, TSendLogData, TUpdateSeedData } from "../renderer/src/types";
 import { DB_URI } from "../renderer/src/data/env";
 import { SERVER_PORT } from "../renderer/src/data/init-data";
-import { eng_str__authErr, eng_str__ui } from "../renderer/src/data";
+import { eng_str__authErr } from "../renderer/src/data";
 
 function createWindow(id: string, options: WindowOptions = {}): any {
     const mainWindow = new BrowserWindow({ ...options });
@@ -33,15 +33,16 @@ function createWindow(id: string, options: WindowOptions = {}): any {
 
 app.whenReady().then(() => {
     electronApp.setAppUserModelId("com.electron");
-
+    console.log(join(__dirname, 'renderer/src/assets/icons/icon.ico'));
+    
     app.on("browser-window-created", (_, window) => {
         optimizer.watchWindowShortcuts(window);
     });
     createWindow("main", {
-        width: 900,
-        height: 670,
+        width: 360,
+        height: 900,
         show: false,
-        title: eng_str__ui.appName,
+        icon: join(__dirname, 'renderer/src/assets/icons/icon.ico'),
         autoHideMenuBar: true,
         webPreferences: {
             preload: join(__dirname, "../preload/index.js"),

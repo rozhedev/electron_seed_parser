@@ -1,6 +1,7 @@
 export const STRINGS_RU = {
     ru_str__ui: {
         appName: "Bruto Forxe Seed",
+        dashboardTitle: "Кабинет",
         logout: "Выйти",
         openMenu: "Открыть меню",
         lastChecked: "Дата последней проверки:",
@@ -32,6 +33,7 @@ export const STRINGS_RU = {
 export const STRINGS_ENG = {
     eng_str__ui: {
         appName: "Bruto Forxe Seed",
+        dashboardTitle: "Dashboard",
         logout: "Log out",
         openMenu: "Open main menu",
         lastChecked: "Last checked:",

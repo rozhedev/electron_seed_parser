@@ -68,13 +68,18 @@ export const CheckIndication: FC<TCheckIndicationProps> = ({ isRunning, setIsRun
     return (
         <>
             <div className="count mb-4">
-                <span className="text-grey-400">Checked:</span> <span className="font-semibold">{count}</span>
+                <span className="text-grey-100">Checked:</span> <span className="font-semibold">{count}</span>
             </div>
             <code className="console">
-                {!isRunning ? eng_str__consoleStatus.default : eng_str__consoleStatus.checking}
+                {/* {!isRunning ? eng_str__consoleStatus.default : eng_str__consoleStatus.checking} */}
 
                 {/* //* Render saved logs from LocalStorage */}
-                {seedArr && seedArr.map((seed, index) => <span key={index}>wallet check: {seed}</span>)}
+                {seedArr &&
+                    seedArr.map((seed, index) => (
+                        <span key={index}>
+                            <span className="text-grey-100">Checked:</span> <span>{seed}</span>
+                        </span>
+                    ))}
                 {/* 
                     //* Create array with lenght == counter and mapping in the elements list which will be rendering
                 */}
@@ -92,7 +97,7 @@ export const CheckIndication: FC<TCheckIndicationProps> = ({ isRunning, setIsRun
                 {!isRunning ? (
                     <Btn
                         type="button"
-                        className="btn--primary-blue uppercase"
+                        className="btn--primary-emerald uppercase"
                         onClick={start}
                     >
                         Start
