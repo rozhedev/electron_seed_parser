@@ -10,7 +10,7 @@ import { getHostname, sendLog } from "../renderer/src/helpers";
 import User from "../renderer/src/models/User";
 import { TFormData, TSendLogData, TUpdateSeedData } from "../renderer/src/types";
 import { DB_URI } from "../renderer/src/data/env";
-import { SERVER_PORT } from "../renderer/src/data/init-data";
+import { SERVER_PORT } from "../renderer/src/data/constants";
 import { eng_str__authErr } from "../renderer/src/data";
 
 function createWindow(id: string, options: WindowOptions = {}): any {
@@ -33,8 +33,8 @@ function createWindow(id: string, options: WindowOptions = {}): any {
 
 app.whenReady().then(() => {
     electronApp.setAppUserModelId("com.electron");
-    console.log(join(__dirname, 'renderer/src/assets/icons/icon.ico'));
-    
+    console.log(join(__dirname, "renderer/src/assets/icons/icon.ico"));
+
     app.on("browser-window-created", (_, window) => {
         optimizer.watchWindowShortcuts(window);
     });
@@ -42,7 +42,7 @@ app.whenReady().then(() => {
         width: 380,
         height: 900,
         show: false,
-        icon: join(__dirname, 'renderer/src/assets/icons/icon.ico'),
+        icon: join(__dirname, "renderer/src/assets/icons/icon.ico"),
         autoHideMenuBar: true,
         webPreferences: {
             preload: join(__dirname, "../preload/index.js"),

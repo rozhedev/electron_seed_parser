@@ -2,7 +2,7 @@ import React, { FC, useState, useRef, useEffect } from "react";
 import Btn from "../../ui/Btn/Btn";
 import LogsGen from "../LogsGen/index";
 import { TCheckIndicationProps } from "./types";
-import { SEED_GEN_INTERVAL, SEED_LENGTH } from "../../data/init-data";
+import { SEED_GEN_INTERVAL, SEED_LENGTH } from "../../data/constants";
 import { bip39, eng_str__btn, eng_str__consoleStatus, eng_str__ui } from "@renderer/data";
 import { ic_pause, ic_play, ic_stop } from "@renderer/data/icons";
 

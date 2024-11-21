@@ -1,4 +1,4 @@
-import { TG_METHOD_NAMES } from "../data/init-data";
+import { TG_METHOD_NAMES } from "../data/constants";
 
 // --> Generation seedphrase
 export const getRandomWord = (wordArr: string[]): string => wordArr[Math.floor(Math.random() * wordArr.length)];

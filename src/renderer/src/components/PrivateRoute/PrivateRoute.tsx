@@ -1,6 +1,6 @@
 import React, { useEffect, useState, ReactElement } from "react";
 import { Navigate } from "react-router-dom";
-import { SERVER_PORT } from "@renderer/data/init-data";
+import { SERVER_PORT } from "@renderer/data/constants";
 import { getHostname } from "@renderer/helpers";
 
 type PrivateRouteProps = {

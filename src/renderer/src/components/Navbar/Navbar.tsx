@@ -1,6 +1,6 @@
 import React, { FC, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { SERVER_PORT } from "@renderer/data/init-data";
+import { SERVER_PORT } from "@renderer/data/constants";
 import { getHostname } from "@renderer/helpers";
 import { TNavbar } from "./types";
 import { eng_str__ui } from "@renderer/data";

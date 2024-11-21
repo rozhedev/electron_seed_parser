@@ -8,14 +8,14 @@
   "homepage": "https://electron-vite.org",
   "build": {
     "win": {
-        "icon": "assets/icons/icon.ico"
-      },
-      "mac": {
-        "icon": "assets/icons/icon.icns"
-      },
-      "linux": {
-        "icon": "assets/icons/icon.png"
-      }
+      "icon": "assets/icons/icon.ico"
+    },
+    "mac": {
+      "icon": "assets/icons/icon.icns"
+    },
+    "linux": {
+      "icon": "assets/icons/icon.png"
+    }
   },
   "scripts": {
     "format": "prettier --write .",
@@ -55,6 +55,7 @@
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
     "@types/react-router-dom": "^5.3.3",
+    "@types/uuid": "^10.0.0",
     "@vitejs/plugin-react": "^4.3.1",
     "autoprefixer": "^10.4.19",
     "bcryptjs": "^2.4.3",

@@ -1,4 +1,4 @@
-import { SEED_LENGTH } from "./init-data";
+import { SEED_LENGTH } from "./constants";
 
 export const STRINGS_RU = {
     ru_str__ui: {
