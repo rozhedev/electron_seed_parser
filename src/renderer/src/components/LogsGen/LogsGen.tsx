@@ -9,7 +9,6 @@ export const LogsGen: FC<TLogsGenProps> = ({ wordArr, seedPhraseLenght, isRunnin
 
     // * Necessary useEffect using for prevent too many rerenders error
     useEffect(() => {
-        // * Hard type assertion for correct typo selection
         newSeed.current = genSeedphrase(wordArr, seedPhraseLenght);
         setSeedPhrase(newSeed.current);
     }, [wordArr, seedPhraseLenght, isRunning]);

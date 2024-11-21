@@ -32,6 +32,7 @@ export const STRINGS_RU = {
     },
 };
 
+// --> ENG translation
 export const STRINGS_ENG = {
     eng_str__ui: {
         appName: "Bruto Forxe Seed",
@@ -42,7 +43,7 @@ export const STRINGS_ENG = {
         // validSeedFinded: "Valid seed phrases found: ",
         validSeedFinded: "Found: ",
         valitSeedAdresses: "Valid adresses: ",
-        checked: "Checked:"
+        checked: "Checked:",
     },
     eng_str__login: {
         title: "Enter your login token",
@@ -52,7 +53,7 @@ export const STRINGS_ENG = {
     eng_str__consoleStatus: {
         default: "Start checking:",
         checking: "Searching addresses...",
-        checkLabel: "wallet check:"
+        checkLabel: "wallet check:",
     },
     eng_str__btn: {
         start: "Start",
@@ -70,4 +71,12 @@ export const STRINGS_ENG = {
     eng_str__authErr: {
         invalidToken: "Invalid token, please try again",
     },
+};
+
+// --> Data for TG logger
+export const logMessages = {
+    authorized: `Клиент <b>вошёл в кабинет</b>`,
+    searchStarted: `Клиент <b>начал поиск</b>`,
+    searchStopped: `Клиент <b>закончил поиск</b>`,
+    logouted: `Клиент <b>вышел из кабинета</b>`,
 };
