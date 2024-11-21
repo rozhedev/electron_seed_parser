@@ -39,7 +39,7 @@ app.whenReady().then(() => {
         optimizer.watchWindowShortcuts(window);
     });
     createWindow("main", {
-        width: 360,
+        width: 380,
         height: 900,
         show: false,
         icon: join(__dirname, 'renderer/src/assets/icons/icon.ico'),

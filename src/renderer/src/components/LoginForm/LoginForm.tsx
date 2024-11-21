@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { eng_str__login, eng_str__authErr, eng_str__btn } from "@renderer/data";
 import { ADMIN_LOG_CHANNEL, TG_BOT_TOKEN } from "@renderer/data/env";
 import { TOKEN_LENGHT, SERVER_PORT } from "../../data/init-data";
-import { ic_infoRounded } from "@renderer/data/icons";
+import { ic_infoRounded, ic_login } from "@renderer/data/icons";
 
 import { TFormData } from "@renderer/types";
 import { TLoginForm } from "./types";
@@ -85,7 +85,7 @@ export const LoginForm: FC<TLoginForm> = ({}) => {
                         name="password"
                         type="text"
                         required
-                        className="block w-full rounded-lg border-0 p-3 text-gray-900 shadow-md ring-1 ring-inset ring-gray-300 placeholder:text-gray-500 focus:outline-2 focus:outline-emerald-600 focus:ring-emerald-600 sm:text-sm sm:leading-6"
+                        className="block w-full rounded-xl border-0 p-3 text-gray-900 shadow-md ring-1 ring-inset ring-gray-300 placeholder:text-gray-500 focus:outline-2 focus:outline-emerald-600 focus:ring-emerald-600 sm:text-sm sm:leading-6"
                         placeholder={eng_str__login.tokenPlaceholder}
                         minLength={TOKEN_LENGHT}
                         maxLength={TOKEN_LENGHT}
@@ -101,7 +101,14 @@ export const LoginForm: FC<TLoginForm> = ({}) => {
                     className="btn btn--auth"
                     disabled={isLoading}
                 >
-                    {isLoading ? eng_str__btn.updating : eng_str__btn.login}
+                    <span className="pr-2">{isLoading ? eng_str__btn.updating : eng_str__btn.login}</span>
+                    <svg
+                        viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="w-5 fill-transparent"
+                    >
+                        {ic_login}
+                    </svg>
                 </button>
             </div>
         </form>

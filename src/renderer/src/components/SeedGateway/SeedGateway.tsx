@@ -3,6 +3,7 @@ import Btn from "../../ui/Btn/Btn";
 import { TSeedGateway } from "./types";
 import { getCurrentDateFormat, getCurrentTimeFormat } from "../../helpers";
 import { eng_str__btn, eng_str__seedStatus, eng_str__ui } from "@renderer/data";
+import { ic_repeat } from "@renderer/data/icons";
 
 export const SeedGateway: FC<TSeedGateway> = ({ isRunning, messages, setMessages, className, tokenPass }) => {
     // * Rewrite sended seed logic
@@ -13,7 +14,7 @@ export const SeedGateway: FC<TSeedGateway> = ({ isRunning, messages, setMessages
     useEffect(() => {
         window.api.onUpdateSeed((res) => {
             const seedList = res.payload._doc.sended_seed;
-            setSeedListLength(seedList.length)
+            setSeedListLength(seedList.length);
 
             if (seedList.length) setMessages(seedList);
             else setMessages([eng_str__seedStatus.notFound]);
@@ -51,10 +52,17 @@ export const SeedGateway: FC<TSeedGateway> = ({ isRunning, messages, setMessages
             <Btn
                 type="button"
                 disabled={!isRunning}
-                className={`btn ${isRunning ? "btn--primary-emerald" : "btn--disabled"}`}
+                className={`btn ${isRunning ? "btn--gray" : "btn--disabled"}`}
                 onClick={handleUpdateBtnClick}
             >
-                {isLoading ? eng_str__btn.updating : eng_str__btn.seedUpdate}
+                <span className="pr-2">{isLoading ? eng_str__btn.updating : eng_str__btn.seedUpdate}</span>
+                <svg
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="fill-transparent w-5"
+                >
+                    {ic_repeat}
+                </svg>
             </Btn>
         </div>
     );

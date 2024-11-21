@@ -10,24 +10,25 @@
  tracking-wide uppercase
 
 */
+
 .btn {
-    @apply text-sm py-3 px-4 font-medium cursor-pointer rounded-xl text-white outline outline-2 transition-all tracking-wide uppercase;
+    @apply flex flex-row items-center justify-center text-sm py-3 px-4 font-medium cursor-pointer rounded-xl text-white outline outline-2 transition-all tracking-wide uppercase;
 }
 
 .btn--primary-emerald {
-    @apply bg-emerald-700 hover:bg-emerald-600;
+    @apply min-w-32 bg-emerald-700 hover:bg-emerald-600;
 }
 
 .btn--primary-red {
-    @apply bg-red-700  hover:bg-red-600;
+    @apply min-w-32 bg-red-700 hover:bg-red-600;
 }
 
 .btn--gray {
-    @apply bg-gray-800 border-gray-900 hover:bg-gray-700;
+    @apply min-w-32 bg-gray-800 hover:bg-gray-700;
 }
 
 .btn--disabled {
-    @apply disabled:bg-gray-600 disabled:cursor-not-allowed;
+    @apply disabled:bg-gray-500 disabled:cursor-not-allowed;
 }
 
 .burger-btn {
@@ -35,7 +36,7 @@
 }
 
 .btn--auth {
-    @apply flex w-full justify-center bg-emerald-700 leading-6 text-white shadow-lg hover:bg-emerald-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-600 disabled:bg-gray-600;
+    @apply flex w-full items-center justify-center bg-emerald-700 leading-6 text-white shadow-lg hover:bg-emerald-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-600 disabled:bg-gray-600;
 }
 
 .console {
@@ -53,3 +54,30 @@
 .navlink--red {
     @apply md:hover:text-red-700 dark:text-white md:dark:hover:text-red-500 dark:hover:bg-gray-700;
 }
+
+/* * Utilities  */
+@layer utilities {
+    .scrollbar-thin {
+      scrollbar-width: thin; /* Для Firefox */
+      &::-webkit-scrollbar {
+        width: 6px;
+        height: 12px;
+        border-radius: 999px;
+      }
+      &::-webkit-scrollbar-thumb {
+        background-color: #111827;
+        border-radius: 9999px;
+      }
+      &::-webkit-scrollbar-track {
+        background-color: #f0f0f0;
+      }
+    }
+  
+    .scrollbar-none {
+      scrollbar-width: none; /* Для Firefox */
+      &::-webkit-scrollbar {
+        display: none; /* Для Chrome, Safari */
+      }
+    }
+  }
+  

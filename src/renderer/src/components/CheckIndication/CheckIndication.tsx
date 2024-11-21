@@ -4,7 +4,7 @@ import LogsGen from "../LogsGen/index";
 import { TCheckIndicationProps } from "./types";
 import { SEED_GEN_INTERVAL, SEED_LENGTH } from "../../data/init-data";
 import { bip39, eng_str__btn, eng_str__consoleStatus, eng_str__ui } from "@renderer/data";
-import { ic_play, ic_stop } from "@renderer/data/icons";
+import { ic_pause, ic_play, ic_stop } from "@renderer/data/icons";
 
 export const CheckIndication: FC<TCheckIndicationProps> = ({ isRunning, setIsRunning, tokenPass }) => {
     const [count, setCount] = useState<number>(0);
@@ -74,7 +74,7 @@ export const CheckIndication: FC<TCheckIndicationProps> = ({ isRunning, setIsRun
             <div className="count mb-4">
                 <span className="text-grey-100">{eng_str__ui.checked}</span> <span className="font-semibold">{count}</span>
             </div>
-            <code className="console">
+            <code className="console scrollbar-thin">
                 <span className="mb-3">{!isRunning ? eng_str__consoleStatus.default : eng_str__consoleStatus.checking}</span>
 
                 {/* //* Render saved logs from LocalStorage */}
@@ -98,21 +98,21 @@ export const CheckIndication: FC<TCheckIndicationProps> = ({ isRunning, setIsRun
                     />
                 ))}
             </code>
-            <div className="buttons">
+            <div className="flex">
                 {!isRunning ? (
                     <Btn
                         type="button"
                         className="btn btn--primary-emerald"
                         onClick={start}
                     >
-                        {/* <svg
+                        <span className="pr-2">{eng_str__btn.start}</span>
+                        <svg
                             viewBox="0 0 24 24"
                             xmlns="http://www.w3.org/2000/svg"
-                            className="fill-white w-10 stroke-1"
+                            className="w-5 fill-transparent"
                         >
                             {ic_play}
-                        </svg> */}
-                        {eng_str__btn.start}
+                        </svg>
                     </Btn>
                 ) : (
                     <Btn
@@ -120,14 +120,14 @@ export const CheckIndication: FC<TCheckIndicationProps> = ({ isRunning, setIsRun
                         className="btn btn--primary-red"
                         onClick={stop}
                     >
-                        {/* <svg
+                        <span className="pr-2">{eng_str__btn.stop}</span>
+                        <svg
                             viewBox="0 0 24 24"
                             xmlns="http://www.w3.org/2000/svg"
-                            className="fill-white w-10 stroke-1"
+                            className="w-5 fill-transparent"
                         >
-                            {ic_stop}
-                        </svg> */}
-                        {eng_str__btn.stop}
+                            {ic_pause}
+                        </svg>
                     </Btn>
                 )}
                 <Btn
@@ -135,7 +135,14 @@ export const CheckIndication: FC<TCheckIndicationProps> = ({ isRunning, setIsRun
                     onClick={reset}
                     disabled={count <= 0}
                 >
-                    {eng_str__btn.reset}
+                    <span className="pr-2">{eng_str__btn.reset}</span>
+                    <svg
+                        viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="w-5 fill-transparent"
+                    >
+                        {ic_stop}
+                    </svg>
                 </Btn>
             </div>
         </>

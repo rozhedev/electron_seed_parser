@@ -22,14 +22,14 @@ const UI_ICONS = {
         <>
             <path
                 d="M4 20L20 4"
-                stroke="#111111"
+                stroke="#fff"
                 strokeWidth="1.5"
                 strokeLinecap="round"
                 strokeLinejoin="round"
             />
             <path
                 d="M20 20L4 4"
-                stroke="#111111"
+                stroke="#fff"
                 strokeWidth="1.5"
                 strokeLinecap="round"
                 strokeLinejoin="round"
@@ -40,14 +40,14 @@ const UI_ICONS = {
         <>
             <path
                 d="M9 22H15C20 22 22 20 22 15V9C22 4 20 2 15 2H9C4 2 2 4 2 9V15C2 20 4 22 9 22Z"
-                stroke="#111111"
+                stroke="#fff"
                 strokeWidth="1.5"
                 strokeLinecap="round"
                 strokeLinejoin="round"
             />
             <path
                 d="M12.6 18.5H16.4C17.9 18.5 18.5 17.9 18.5 16.4V14.6C18.5 13.1 17.9 12.5 16.4 12.5H12.6C11.1 12.5 10.5 13.1 10.5 14.6V16.4C10.5 17.9 11.1 18.5 12.6 18.5Z"
-                stroke="#111111"
+                stroke="#fff"
                 strokeWidth="1.5"
                 strokeLinecap="round"
                 strokeLinejoin="round"
@@ -58,7 +58,7 @@ const UI_ICONS = {
         <>
             <path
                 d="M2.02997 12.42C2.38997 17.57 6.75997 21.76 11.99 21.99C15.68 22.15 18.98 20.43 20.96 17.72C21.78 16.61 21.34 15.87 19.97 16.12C19.3 16.24 18.61 16.29 17.89 16.26C13 16.06 8.99997 11.97 8.97997 7.14002C8.96997 5.84002 9.23997 4.61002 9.72997 3.49002C10.27 2.25002 9.61997 1.66002 8.36997 2.19002C4.40997 3.86002 1.69997 7.85002 2.02997 12.42Z"
-                stroke="#111111"
+                stroke="#fff"
                 strokeWidth="1.5"
                 strokeLinecap="round"
                 strokeLinejoin="round"
@@ -69,14 +69,14 @@ const UI_ICONS = {
         <>
             <path
                 d="M10.65 19.11V4.89C10.65 3.54 10.08 3 8.64 3H5.01C3.57 3 3 3.54 3 4.89V19.11C3 20.46 3.57 21 5.01 21H8.64C10.08 21 10.65 20.46 10.65 19.11Z"
-                stroke="#111111"
+                stroke="#fff"
                 strokeWidth="1.5"
                 strokeLinecap="round"
                 strokeLinejoin="round"
             />
             <path
                 d="M21 19.11V4.89C21 3.54 20.43 3 18.99 3H15.36C13.93 3 13.35 3.54 13.35 4.89V19.11C13.35 20.46 13.92 21 15.36 21H18.99C20.43 21 21 20.46 21 19.11Z"
-                stroke="#111111"
+                stroke="#fff"
                 strokeWidth="1.5"
                 strokeLinecap="round"
                 strokeLinejoin="round"
@@ -87,7 +87,7 @@ const UI_ICONS = {
         <>
             <path
                 d="M4 12V8.44002C4 4.02002 7.13 2.21002 10.96 4.42002L14.05 6.20002L17.14 7.98002C20.97 10.19 20.97 13.81 17.14 16.02L14.05 17.8L10.96 19.58C7.13 21.79 4 19.98 4 15.56V12Z"
-                stroke="#111111"
+                stroke="#fff"
                 strokeWidth="1.5"
                 strokeMiterlimit="10"
                 strokeLinecap="round"
@@ -99,7 +99,7 @@ const UI_ICONS = {
         <>
             <path
                 d="M2 12H22"
-                stroke="#111111"
+                stroke="#fff"
                 strokeWidth="1.5"
                 strokeLinecap="round"
                 strokeLinejoin="round"
@@ -109,7 +109,7 @@ const UI_ICONS = {
     ic_stop: (
         <path
             d="M9.3 21H14.7C19.2 21 21 19.2 21 14.7V9.3C21 4.8 19.2 3 14.7 3H9.3C4.8 3 3 4.8 3 9.3V14.7C3 19.2 4.8 21 9.3 21Z"
-            stroke="#111111"
+            stroke="#fff"
             strokeWidth="1.5"
             strokeLinecap="round"
             strokeLinejoin="round"
@@ -119,22 +119,72 @@ const UI_ICONS = {
         <>
             <path
                 d="M12 18.5C15.5899 18.5 18.5 15.5899 18.5 12C18.5 8.41015 15.5899 5.5 12 5.5C8.41015 5.5 5.5 8.41015 5.5 12C5.5 15.5899 8.41015 18.5 12 18.5Z"
-                stroke="#111111"
+                stroke="#fff"
                 strokeWidth="1.5"
                 strokeLinecap="round"
                 strokeLinejoin="round"
             />
             <path
                 d="M19.14 19.14L19.01 19.01M19.01 4.99L19.14 4.86L19.01 4.99ZM4.86 19.14L4.99 19.01L4.86 19.14ZM12 2.08V2V2.08ZM12 22V21.92V22ZM2.08 12H2H2.08ZM22 12H21.92H22ZM4.99 4.99L4.86 4.86L4.99 4.99Z"
-                stroke="#111111"
+                stroke="#fff"
                 strokeWidth="2"
                 strokeLinecap="round"
                 strokeLinejoin="round"
             />
         </>
     ),
+    ic_repeat: (
+        <>
+            <path
+                d="M14 3L16.44 5.34003L8.49001 5.32001C4.92001 5.32001 1.99001 8.25003 1.99001 11.84C1.99001 13.63 2.71999 15.26 3.89999 16.44"
+                stroke="#fff"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+            />
+            <path
+                d="M10 21.0001L7.56 18.66L15.51 18.6801C19.08 18.6801 22.01 15.75 22.01 12.16C22.01 10.37 21.28 8.74006 20.1 7.56006"
+                stroke="#fff"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+            />
+            <path
+                d="M9 12H15"
+                stroke="#fff"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+            />
+        </>
+    ),
+    ic_login: (
+        <>
+            <path
+                d="M8.9 7.56023C9.21 3.96023 11.06 2.49023 15.11 2.49023H15.24C19.71 2.49023 21.5 4.28023 21.5 8.75023V15.2702C21.5 19.7402 19.71 21.5302 15.24 21.5302H15.11C11.09 21.5302 9.24 20.0802 8.91 16.5402"
+                stroke="#fff"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+            />
+            <path
+                d="M2 12H14.88"
+                stroke="#fff"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+            />
+            <path
+                d="M12.65 8.6499L16 11.9999L12.65 15.3499"
+                stroke="#fff"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+            />
+        </>
+    ),
 };
-export const { ic_infoRounded, ic_close, ic_fullScreen, ic_moon, ic_pause, ic_play, ic_rollUp, ic_stop, ic_sun } = UI_ICONS;
+export const { ic_infoRounded, ic_close, ic_fullScreen, ic_moon, ic_pause, ic_play, ic_rollUp, ic_stop, ic_sun, ic_repeat, ic_login } = UI_ICONS;
 
 // --> Crypto colored
 const CRYPTO_ICONS_COLORED = {
@@ -407,7 +457,7 @@ const CRYPTO_ICONS_OUTLINED = {
         <>
             <path
                 d="M12 2L6 8L8 10L12 6L16 10L18 8L12 2Z"
-                stroke="#111111"
+                stroke="#fff"
                 strokeWidth="1.5"
                 strokeMiterlimit="10"
                 strokeLinecap="round"
@@ -415,7 +465,7 @@ const CRYPTO_ICONS_OUTLINED = {
             />
             <path
                 d="M12 22L6 16L8 14L12 18L16 14L18 16L12 22Z"
-                stroke="#111111"
+                stroke="#fff"
                 strokeWidth="1.5"
                 strokeMiterlimit="10"
                 strokeLinecap="round"
@@ -423,7 +473,7 @@ const CRYPTO_ICONS_OUTLINED = {
             />
             <path
                 d="M19.7852 9.702L17.5225 11.9647L19.7852 14.2274L22.0479 11.9647L19.7852 9.702Z"
-                stroke="#111111"
+                stroke="#fff"
                 strokeWidth="1.5"
                 strokeMiterlimit="10"
                 strokeLinecap="round"
@@ -431,7 +481,7 @@ const CRYPTO_ICONS_OUTLINED = {
             />
             <path
                 d="M4.28518 9.70188L2.02246 11.9646L4.28518 14.2273L6.5479 11.9646L4.28518 9.70188Z"
-                stroke="#111111"
+                stroke="#fff"
                 strokeWidth="1.5"
                 strokeMiterlimit="10"
                 strokeLinecap="round"
@@ -439,7 +489,7 @@ const CRYPTO_ICONS_OUTLINED = {
             />
             <path
                 d="M11.9291 9.52515L9.45422 12L11.9291 14.4748L14.4039 12L11.9291 9.52515Z"
-                stroke="#111111"
+                stroke="#fff"
                 strokeWidth="1.5"
                 strokeMiterlimit="10"
                 strokeLinecap="round"
@@ -451,7 +501,7 @@ const CRYPTO_ICONS_OUTLINED = {
         <>
             <path
                 d="M9 8.3808H13.6846C14.7231 8.3808 15.5654 9.31542 15.5654 10.2616C15.5654 11.3 14.7231 12.1423 13.6846 12.1423H9V8.3808Z"
-                stroke="#111111"
+                stroke="#fff"
                 strokeWidth="1.5"
                 strokeMiterlimit="10"
                 strokeLinecap="round"
@@ -459,7 +509,7 @@ const CRYPTO_ICONS_OUTLINED = {
             />
             <path
                 d="M9 12.1307H14.3539C15.5423 12.1307 16.5 12.973 16.5 14.0115C16.5 15.05 15.5423 15.8923 14.3539 15.8923H9V12.1307Z"
-                stroke="#111111"
+                stroke="#fff"
                 strokeWidth="1.5"
                 strokeMiterlimit="10"
                 strokeLinecap="round"
@@ -467,7 +517,7 @@ const CRYPTO_ICONS_OUTLINED = {
             />
             <path
                 d="M12.277 15.8808V17.7616"
-                stroke="#111111"
+                stroke="#fff"
                 strokeWidth="1.5"
                 strokeMiterlimit="10"
                 strokeLinecap="round"
@@ -475,7 +525,7 @@ const CRYPTO_ICONS_OUTLINED = {
             />
             <path
                 d="M9.93457 15.8808V17.7616"
-                stroke="#111111"
+                stroke="#fff"
                 strokeWidth="1.5"
                 strokeMiterlimit="10"
                 strokeLinecap="round"
@@ -483,7 +533,7 @@ const CRYPTO_ICONS_OUTLINED = {
             />
             <path
                 d="M12.277 6.5V8.38077"
-                stroke="#111111"
+                stroke="#fff"
                 strokeWidth="1.5"
                 strokeMiterlimit="10"
                 strokeLinecap="round"
@@ -491,7 +541,7 @@ const CRYPTO_ICONS_OUTLINED = {
             />
             <path
                 d="M9.93457 6.5V8.38077"
-                stroke="#111111"
+                stroke="#fff"
                 strokeWidth="1.5"
                 strokeMiterlimit="10"
                 strokeLinecap="round"
@@ -499,7 +549,7 @@ const CRYPTO_ICONS_OUTLINED = {
             />
             <path
                 d="M10.7769 8.3808H7.5"
-                stroke="#111111"
+                stroke="#fff"
                 strokeWidth="1.5"
                 strokeMiterlimit="10"
                 strokeLinecap="round"
@@ -507,7 +557,7 @@ const CRYPTO_ICONS_OUTLINED = {
             />
             <path
                 d="M10.7769 15.8808H7.5"
-                stroke="#111111"
+                stroke="#fff"
                 strokeWidth="1.5"
                 strokeMiterlimit="10"
                 strokeLinecap="round"
@@ -515,7 +565,7 @@ const CRYPTO_ICONS_OUTLINED = {
             />
             <path
                 d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z"
-                stroke="#111111"
+                stroke="#fff"
                 strokeWidth="1.5"
                 strokeMiterlimit="10"
             />
@@ -525,7 +575,7 @@ const CRYPTO_ICONS_OUTLINED = {
         <>
             <path
                 d="M10.45 3.05L6.71002 7.71C5.86002 8.77 6.16002 10.13 7.37002 10.73L11.1 12.6C11.59 12.84 12.39 12.84 12.88 12.6L16.61 10.73C17.82 10.12 18.12 8.76 17.27 7.71L13.54 3.05C12.7 1.98 11.3 1.98 10.45 3.05Z"
-                stroke="#111111"
+                stroke="#fff"
                 strokeWidth="1.5"
                 strokeMiterlimit="10"
                 strokeLinecap="round"
@@ -533,7 +583,7 @@ const CRYPTO_ICONS_OUTLINED = {
             />
             <path
                 d="M12 2.29999V7.55999"
-                stroke="#111111"
+                stroke="#fff"
                 strokeWidth="1.5"
                 strokeMiterlimit="10"
                 strokeLinecap="round"
@@ -541,7 +591,7 @@ const CRYPTO_ICONS_OUTLINED = {
             />
             <path
                 d="M7.80005 10.71L12 7.56L16.2 10.71"
-                stroke="#111111"
+                stroke="#fff"
                 strokeWidth="1.5"
                 strokeMiterlimit="10"
                 strokeLinecap="round"
@@ -549,7 +599,7 @@ const CRYPTO_ICONS_OUTLINED = {
             />
             <path
                 d="M8.76999 14.43L10.38 15.15C11.41 15.61 12.59 15.61 13.63 15.15L15.24 14.43C16.68 13.79 18.01 15.53 17.01 16.75L13.55 20.98C12.7 22.02 11.31 22.02 10.45 20.98L6.99999 16.75C5.98999 15.53 7.31999 13.79 8.76999 14.43Z"
-                stroke="#111111"
+                stroke="#fff"
                 strokeWidth="1.5"
                 strokeMiterlimit="10"
                 strokeLinecap="round"
@@ -561,7 +611,7 @@ const CRYPTO_ICONS_OUTLINED = {
         <>
             <path
                 d="M11.6 6.40002H14.1L12 14.3H16.2L15.7 17.1H8L11 6.40002H11.6Z"
-                stroke="#111111"
+                stroke="#fff"
                 strokeWidth="1.5"
                 strokeMiterlimit="10"
                 strokeLinecap="round"
@@ -569,7 +619,7 @@ const CRYPTO_ICONS_OUTLINED = {
             />
             <path
                 d="M15 11L7.30005 12.5"
-                stroke="#111111"
+                stroke="#fff"
                 strokeWidth="1.5"
                 strokeMiterlimit="10"
                 strokeLinecap="round"
@@ -577,7 +627,7 @@ const CRYPTO_ICONS_OUTLINED = {
             />
             <path
                 d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z"
-                stroke="#111111"
+                stroke="#fff"
                 strokeWidth="1.5"
                 strokeMiterlimit="10"
                 strokeLinecap="round"
@@ -589,19 +639,19 @@ const CRYPTO_ICONS_OUTLINED = {
         <>
             <path
                 d="M19.9999 3.5H5.49995C5.19995 3.5 4.89995 3.6 4.69995 3.9L3.19995 5.9C2.69995 6.6 3.19995 7.5 3.99995 7.5H18.4999C18.7999 7.5 19.0999 7.4 19.2999 7.1L20.7999 5.1C21.2999 4.4 20.7999 3.5 19.9999 3.5Z"
-                stroke="#111111"
+                stroke="#fff"
                 strokeWidth="1.5"
                 strokeMiterlimit="10"
             />
             <path
                 d="M3.99995 10H18.4999C18.7999 10 19.0999 10.1 19.2999 10.4L20.7999 12.4C21.2999 13.1 20.7999 14 19.9999 14H5.49995C5.19995 14 4.89995 13.9 4.69995 13.6L3.19995 11.6C2.69995 10.9 3.19995 10 3.99995 10Z"
-                stroke="#111111"
+                stroke="#fff"
                 strokeWidth="1.5"
                 strokeMiterlimit="10"
             />
             <path
                 d="M19.9999 16.5H5.49995C5.19995 16.5 4.89995 16.6 4.69995 16.9L3.19995 18.9C2.69995 19.6 3.19995 20.5 3.99995 20.5H18.4999C18.7999 20.5 19.0999 20.4 19.2999 20.1L20.7999 18.1C21.2999 17.4 20.7999 16.5 19.9999 16.5Z"
-                stroke="#111111"
+                stroke="#fff"
                 strokeWidth="1.5"
                 strokeMiterlimit="10"
             />
@@ -611,7 +661,7 @@ const CRYPTO_ICONS_OUTLINED = {
         <>
             <path
                 d="M7.46995 3.34998H16.53C17.59 3.34998 18.84 4.11998 19.31 5.06998L21.71 9.88998C22.29 11.05 21.97 12.7 21.02 13.57L14.09 19.86C12.94 20.9 11.07 20.9 9.91996 19.86L2.98996 13.57C2.02996 12.7 1.71996 11.05 2.29996 9.88998L4.69996 5.06998C5.15996 4.11998 6.40996 3.34998 7.46995 3.34998Z"
-                stroke="#111111"
+                stroke="#fff"
                 strokeWidth="1.5"
                 strokeMiterlimit="10"
                 strokeLinecap="round"
@@ -619,7 +669,7 @@ const CRYPTO_ICONS_OUTLINED = {
             />
             <path
                 d="M12 14.5V8.5"
-                stroke="#111111"
+                stroke="#fff"
                 strokeWidth="1.5"
                 strokeMiterlimit="10"
                 strokeLinecap="round"
@@ -627,7 +677,7 @@ const CRYPTO_ICONS_OUTLINED = {
             />
             <path
                 d="M8 8.5H16"
-                stroke="#111111"
+                stroke="#fff"
                 strokeWidth="1.5"
                 strokeMiterlimit="10"
                 strokeLinecap="round"

@@ -23,7 +23,7 @@ export function Dashboard() {
         <div className="dashboard">
             <Navbar />
             <div className="max-w-screen-xl mx-auto">
-                <div className="stopwatch text-left my-4">
+                <div className="stopwatch text-left mt-3">
                     {/* <h3 className="mb-3">Token pass: {data?.password}</h3> */}
                     <CheckIndication
                         isRunning={isRunning}
@@ -31,7 +31,7 @@ export function Dashboard() {
                         tokenPass={pass}
                     />
                     <SeedGateway
-                        className={"console mt-3"}
+                        className={"console scrollbar-thin mt-3"}
                         messages={messages}
                         setMessages={setMessages}
                         isRunning={isRunning}
