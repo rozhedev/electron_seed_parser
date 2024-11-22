@@ -1,6 +1,6 @@
 import { Router, Route } from "electron-router-dom";
 import Login from "./pages/Login";
-import PrivateRoute from "./components/PrivateRoute";
+import { PrivateRoute } from "./ui";
 import Dashboard from "./pages/Dashboard";
 
 export default function AppRoutes() {

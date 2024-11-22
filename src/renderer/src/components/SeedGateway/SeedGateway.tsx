@@ -1,23 +1,9 @@
 import React, { FC, useEffect, useState } from "react";
-import Btn from "../../ui/Btn/Btn";
+import { IndicatorBtn } from "@renderer/ui";
 import { TSeedGateway } from "./types";
-import { getCurrentDateFormat, getCurrentTimeFormat, randomIntNumByInterval } from "../../helpers";
+import { getCurrentDateFormat, getCurrentTimeFormat } from "@renderer/helpers";
 import { eng_str__btn, eng_str__seedStatus, eng_str__ui } from "@renderer/data";
 import { ic_repeat } from "@renderer/data/icons";
-import { CoinSymbolsKeys, CryptoExchangersVal } from "@renderer/data/constants";
-
-const genValidLog = (min: number, max: number): JSX.Element => {
-    const coin = CoinSymbolsKeys[randomIntNumByInterval(0, CoinSymbolsKeys.length)];
-    const exchanger = CryptoExchangersVal[randomIntNumByInterval(0, CryptoExchangersVal.length)];
-
-    const balance = Math.random() * max + min;
-
-    return (
-        <span>
-            usd/{coin} <span>{balance}</span> | {exchanger}
-        </span>
-    );
-};
 
 export const SeedGateway: FC<TSeedGateway> = ({ isRunning, messages, setMessages, className, tokenPass }) => {
     // * Rewrite sended seed logic
@@ -60,25 +46,16 @@ export const SeedGateway: FC<TSeedGateway> = ({ isRunning, messages, setMessages
             <code className={className}>
                 <span>{eng_str__ui.valitSeedAdresses}</span>
                 {messages.map((msg: string, index: number) => (
-                    // {genValidLog(10, 100)}
                     <span key={index}>{msg}</span>
                 ))}
             </code>
-            <Btn
-                type="button"
+            <IndicatorBtn
+                btnClass={isRunning ? "btn--gray" : "btn--disabled"}
+                icon={ic_repeat}
+                label={isLoading ? eng_str__btn.updating : eng_str__btn.seedUpdate}
                 disabled={!isRunning}
-                className={`btn ${isRunning ? "btn--gray" : "btn--disabled"}`}
                 onClick={handleUpdateBtnClick}
-            >
-                <span className="pr-2">{isLoading ? eng_str__btn.updating : eng_str__btn.seedUpdate}</span>
-                <svg
-                    viewBox="0 0 24 24"
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="fill-transparent w-5"
-                >
-                    {ic_repeat}
-                </svg>
-            </Btn>
+            />
         </div>
     );
 };

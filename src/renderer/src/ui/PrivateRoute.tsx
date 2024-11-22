@@ -3,11 +3,11 @@ import { Navigate } from "react-router-dom";
 import { SERVER_PORT } from "@renderer/data/constants";
 import { getHostname } from "@renderer/helpers";
 
-type PrivateRouteProps = {
+type TPrivateRoute = {
     element: ReactElement;
 };
 
-export const PrivateRoute: React.FC<PrivateRouteProps> = ({ element }) => {
+export const PrivateRoute: React.FC<TPrivateRoute> = ({ element }) => {
     const [isAuth, setIsAuth] = useState<boolean | null>(null);
 
     useEffect(() => {

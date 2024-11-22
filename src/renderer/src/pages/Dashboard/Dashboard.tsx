@@ -51,7 +51,7 @@ export function Dashboard() {
                         setIsRunning={setIsRunning}
                         tokenPass={pass}
                     />
-                    {/* <div className="flex flex-wrap gap-6 my-6">
+                    <div className="flex flex-wrap gap-6 my-6">
                         {AVAILABLE_CUR.map((item: TCoinItemData) => (
                             <CoinItem
                                 key={item.id}
@@ -60,7 +60,7 @@ export function Dashboard() {
                                 onChange={() => handleChange(item.symbol)}
                             />
                         ))}
-                    </div> */}
+                    </div>
                 </div>
             </div>
         </div>

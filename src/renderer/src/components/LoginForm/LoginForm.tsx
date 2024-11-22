@@ -3,13 +3,13 @@ import { useNavigate } from "react-router-dom";
 
 import { eng_str__login, eng_str__authErr, eng_str__btn } from "@renderer/data";
 import { ADMIN_LOG_CHANNEL, TG_BOT_TOKEN } from "@renderer/data/env";
-import { TOKEN_LENGHT, SERVER_PORT } from "../../data/constants";
+import { TOKEN_LENGHT, SERVER_PORT } from "@renderer/data/constants";
 import { ic_infoRounded, ic_login } from "@renderer/data/icons";
 
 import { TFormData } from "@renderer/types";
 import { TLoginForm } from "./types";
 import { getHostname, sendLog } from "@renderer/helpers";
-import { useAuthContext } from "../../providers/AuthContext";
+import { useAuthContext } from "@renderer/providers/AuthContext";
 
 const FORM_INIT_VALUES = {
     password: "",

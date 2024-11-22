@@ -1,10 +1,11 @@
 import React, { FC, useState, useRef, useEffect } from "react";
 import { TCheckIndicationProps } from "./types";
 import { bip39, eng_str__btn, eng_str__consoleStatus, eng_str__ui } from "@renderer/data";
-import { SEED_GEN_INTERVAL, SEED_LENGTH } from "../../data/constants";
+import { SEED_GEN_INTERVAL, SEED_LENGTH } from "@renderer/data/constants";
 import { ic_pause, ic_play, ic_stop } from "@renderer/data/icons";
 import { genSeedphrase } from "@renderer/helpers";
-import { IndicatorBtn, MappedLogItem } from "./chunks";
+import { IndicatorBtn } from "@renderer/ui";
+import { MappedLogItem } from "./chunks";
 
 export const CheckIndication: FC<TCheckIndicationProps> = ({ isRunning, setIsRunning, tokenPass }) => {
     const [count, setCount] = useState<number>(0);

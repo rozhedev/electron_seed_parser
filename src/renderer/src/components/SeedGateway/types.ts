@@ -1,11 +1,9 @@
-import { TRunningState } from "../../types";
-import { Dispatch, SetStateAction } from "react";
+import { StateAction, TRunningState } from "@renderer/types";
 
 type TMessages = string[];
 export type TSeedGateway = Partial<TRunningState> & {
     className: string;
     messages: TMessages;
-    setMessages: Dispatch<SetStateAction<TMessages>>;
+    setMessages: StateAction<TMessages>;
     tokenPass: string;
 };
-
