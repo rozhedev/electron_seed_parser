@@ -183,9 +183,21 @@ const UI_ICONS = {
             />
         </>
     ),
+    ic_checkmark: (
+        <>
+            <path
+                d="M6 11L10 14.5L14.5 5"
+                stroke="#FEFEFE"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+            />
+        </>
+    ),
 };
-export const { ic_infoRounded, ic_close, ic_fullScreen, ic_moon, ic_pause, ic_play, ic_rollUp, ic_stop, ic_sun, ic_repeat, ic_login } = UI_ICONS;
+export const { ic_infoRounded, ic_close, ic_fullScreen, ic_moon, ic_pause, ic_play, ic_rollUp, ic_stop, ic_sun, ic_repeat, ic_login, ic_checkmark } = UI_ICONS;
 
+//
 // --> Crypto colored
 const CRYPTO_ICONS_COLORED = {
     ic_colored_bnb: (
@@ -451,6 +463,7 @@ const CRYPTO_ICONS_COLORED = {
 };
 export const { ic_colored_bnb, ic_colored_btc, ic_colored_eth, ic_colored_ltc, ic_colored_sol, ic_colored_usdt } = CRYPTO_ICONS_COLORED;
 
+//
 // --> Crypto outlined
 const CRYPTO_ICONS_OUTLINED = {
     ic_outlined_bnb: (

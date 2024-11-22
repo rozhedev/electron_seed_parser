@@ -1,6 +1,7 @@
 import { ic_colored_bnb, ic_colored_btc, ic_colored_eth, ic_colored_ltc, ic_colored_sol, ic_colored_usdt } from "@renderer/data/icons";
 import { v4 as uuid4 } from "uuid";
-import { CoinSymbols, TCoinItemData } from "./types";
+import { CoinSymbols } from "@renderer/data/constants";
+import { TCoinItemData } from "./types";
 
 export const AVAILABLE_CUR: TCoinItemData[]  = [
     {

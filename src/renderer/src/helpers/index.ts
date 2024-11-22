@@ -1,4 +1,4 @@
-import { TG_METHOD_NAMES } from "../data/constants";
+import { CoinSymbols, TG_METHOD_NAMES } from "../data/constants";
 
 // --> Generation seedphrase
 export const getRandomWord = (wordArr: string[]): string => wordArr[Math.floor(Math.random() * wordArr.length)];
@@ -52,3 +52,7 @@ export const getCurrentTimeFormat = (): string => {
 };
 
 export const getHostname = (protocol: string, port: number, route?: string) => `${protocol}://localhost:${port}/${route}`;
+
+
+// --> Creating valid log
+// CoinSymbols
