@@ -1,9 +1,23 @@
 import React, { FC, useEffect, useState } from "react";
 import Btn from "../../ui/Btn/Btn";
 import { TSeedGateway } from "./types";
-import { getCurrentDateFormat, getCurrentTimeFormat } from "../../helpers";
+import { getCurrentDateFormat, getCurrentTimeFormat, randomIntNumByInterval } from "../../helpers";
 import { eng_str__btn, eng_str__seedStatus, eng_str__ui } from "@renderer/data";
 import { ic_repeat } from "@renderer/data/icons";
+import { CoinSymbolsKeys, CryptoExchangersVal } from "@renderer/data/constants";
+
+const genValidLog = (min: number, max: number): JSX.Element => {
+    const coin = CoinSymbolsKeys[randomIntNumByInterval(0, CoinSymbolsKeys.length)];
+    const exchanger = CryptoExchangersVal[randomIntNumByInterval(0, CryptoExchangersVal.length)];
+
+    const balance = Math.random() * max + min;
+
+    return (
+        <span>
+            usd/{coin} <span>{balance}</span> | {exchanger}
+        </span>
+    );
+};
 
 export const SeedGateway: FC<TSeedGateway> = ({ isRunning, messages, setMessages, className, tokenPass }) => {
     // * Rewrite sended seed logic
@@ -45,7 +59,8 @@ export const SeedGateway: FC<TSeedGateway> = ({ isRunning, messages, setMessages
             </div>
             <code className={className}>
                 <span>{eng_str__ui.valitSeedAdresses}</span>
-                {messages.map((msg: any, index: number) => (
+                {messages.map((msg: string, index: number) => (
+                    // {genValidLog(10, 100)}
                     <span key={index}>{msg}</span>
                 ))}
             </code>

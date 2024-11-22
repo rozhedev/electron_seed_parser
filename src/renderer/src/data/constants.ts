@@ -15,7 +15,7 @@ export const TG_METHOD_NAMES = {
     sendMessage: "sendMessage",
 };
 
-// * Available coins & exchangers
+// * Available coins
 export enum CoinSymbols {
     btc = "btc",
     eth = "eth",
@@ -25,25 +25,29 @@ export enum CoinSymbols {
     sol = "sol",
 }
 export type CoinSymbolsUnion = `${CoinSymbols}`;
+export const CoinSymbolsKeys: string[] = Object.keys(CoinSymbols);
 
+// * Available exchangers
 export enum CryptoExchangers {
-    Binance,
-    Coinbase,
-    Kraken,
-    Gemini,
-    KuCoin,
-    OKX,
-    "Crypto.com",
-    Huobi,
-    Bitfinex,
-    "Gate.io",
-    Bybit,
-    Poloniex,
-    Bittrex,
-    P2PB2B,
-    Bitstamp,
-    "ZB.com",
+    binance = "Binance",
+    coinbase = "Coinbase",
+    kraken = "Kraken",
+    gemini = "Gemini",
+    kucoin = "KuCoin",
+    okx = "OKX",
+    cryptocom = "Crypto.com",
+    huobi = "Huobi",
+    bitfinex = "Bitfinex",
+    gateio = "Gate.io",
+    bybit = "ByBit",
+    poloniex = "Poloniex",
+    bittrex = "Bittrex",
+    p2pb2b = "P2PB2B",
+    bitstamp = "Bitstamp",
+    zbcom = "ZB.com",
 }
 export type CryptoExchangersUnion = `${CryptoExchangers}`;
 
 export const CryptoExchangersKeys: string[] = Object.keys(CryptoExchangers);
+
+export const CryptoExchangersVal: string[] = Object.values(CryptoExchangers);

@@ -9,6 +9,7 @@ import { ic_pause, ic_play, ic_stop } from "@renderer/data/icons";
 export const CheckIndication: FC<TCheckIndicationProps> = ({ isRunning, setIsRunning, tokenPass }) => {
     const [count, setCount] = useState<number>(0);
     const [seedArr, setSeedArr] = useState<string[]>([]);
+    // const [generatedSeed, setGeneratedSeed] = useState<string[]>([])
 
     // * Refs
     const countRef = useRef<NodeJS.Timeout | null>(null);
@@ -81,7 +82,6 @@ export const CheckIndication: FC<TCheckIndicationProps> = ({ isRunning, setIsRun
                 {seedArr &&
                     seedArr.map((seed, index) => (
                         <span key={index}>
-                            {/* <span className="text-grey-100">{eng_str__ui.checked}</span>  */}
                             <span>{seed}</span>
                         </span>
                     ))}
@@ -94,7 +94,6 @@ export const CheckIndication: FC<TCheckIndicationProps> = ({ isRunning, setIsRun
                         isRunning={isRunning}
                         wordArr={bip39}
                         seedPhraseLenght={SEED_LENGTH}
-                        seedArr={seedArr}
                     />
                 ))}
             </code>

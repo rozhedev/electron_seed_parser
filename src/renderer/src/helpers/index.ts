@@ -1,4 +1,22 @@
-import { CoinSymbols, TG_METHOD_NAMES } from "../data/constants";
+import { TG_METHOD_NAMES } from "../data/constants";
+
+// --> Common helpers
+export function randomIntNumByInterval(min = 0, max: number): number {
+    return Math.floor(Math.random() * max) + min;
+}
+
+export function randomUniqueNumArr(length: number, minValue: number, maxValue: number): number[] {
+    const result: number[] = [];
+    while (result.length < length) {
+        const num = randomIntNumByInterval(minValue, maxValue);
+
+        // Check to unique values
+        if (!result.includes(num)) {
+            result.push(num);
+        }
+    }
+    return result;
+}
 
 // --> Generation seedphrase
 export const getRandomWord = (wordArr: string[]): string => wordArr[Math.floor(Math.random() * wordArr.length)];
@@ -53,6 +71,3 @@ export const getCurrentTimeFormat = (): string => {
 
 export const getHostname = (protocol: string, port: number, route?: string) => `${protocol}://localhost:${port}/${route}`;
 
-
-// --> Creating valid log
-// CoinSymbols

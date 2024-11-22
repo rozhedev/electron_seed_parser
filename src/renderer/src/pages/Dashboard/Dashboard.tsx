@@ -3,7 +3,8 @@ import Navbar from "@renderer/components/Navbar";
 import CheckIndication from "@renderer/components/CheckIndication";
 import SeedGateway from "@renderer/components/SeedGateway";
 import { useAuthContext } from "@renderer/providers/AuthContext";
-import CoinItem, { AVAILABLE_CUR, CoinSymbols, CoinSymbolsUnion, TCoinItemData } from "@renderer/components/CoinItem";
+import CoinItem, { AVAILABLE_CUR, TCoinItemData } from "@renderer/components/CoinItem";
+import { CoinSymbols, CoinSymbolsUnion } from "@renderer/data/constants";
 
 export function Dashboard() {
     const [isRunning, setIsRunning] = useState<boolean>(false);
