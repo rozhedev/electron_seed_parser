@@ -13,12 +13,12 @@ export function Dashboard() {
     const { data } = useAuthContext();
 
     const [checkedGroup, setCheckedGroup] = useState({
-        [CoinSymbols.btc]: false,
-        [CoinSymbols.eth]: false,
-        [CoinSymbols.ltc]: false,
-        [CoinSymbols.usdt]: false,
-        [CoinSymbols.bnb]: false,
-        [CoinSymbols.sol]: false,
+        [CoinSymbols.btc]: true,
+        [CoinSymbols.eth]: true,
+        [CoinSymbols.ltc]: true,
+        [CoinSymbols.usdt]: true,
+        [CoinSymbols.bnb]: true,
+        [CoinSymbols.sol]: true,
     });
 
     const handleChange = (type: CoinSymbolsUnion) => setCheckedGroup((prev) => ({ ...prev, [type]: !prev[type] }));
@@ -51,7 +51,7 @@ export function Dashboard() {
                         setIsRunning={setIsRunning}
                         tokenPass={pass}
                     />
-                    <div className="flex flex-wrap gap-6 my-6">
+                    {/* <div className="flex flex-wrap gap-6 my-6">
                         {AVAILABLE_CUR.map((item: TCoinItemData) => (
                             <CoinItem
                                 key={item.id}
@@ -60,7 +60,7 @@ export function Dashboard() {
                                 onChange={() => handleChange(item.symbol)}
                             />
                         ))}
-                    </div>
+                    </div> */}
                 </div>
             </div>
         </div>

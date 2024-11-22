@@ -4,7 +4,6 @@ import { bip39, eng_str__btn, eng_str__consoleStatus, eng_str__ui } from "@rende
 import { SEED_GEN_INTERVAL, SEED_LENGTH } from "../../data/constants";
 import { ic_pause, ic_play, ic_stop } from "@renderer/data/icons";
 import { genSeedphrase } from "@renderer/helpers";
-import { TUpdateSeedData } from "@renderer/types";
 import { IndicatorBtn, MappedLogItem } from "./chunks";
 
 export const CheckIndication: FC<TCheckIndicationProps> = ({ isRunning, setIsRunning, tokenPass }) => {
@@ -54,13 +53,13 @@ export const CheckIndication: FC<TCheckIndicationProps> = ({ isRunning, setIsRun
     // --> Handlers
     const start = async () => {
         setIsRunning(true);
-        cachedLogs = cachedSeedArr.join(":");
-
-        localStorage.setItem("cachedSeedArr", cachedLogs);
         window.api.updateSearchStatus({ password: tokenPass, bool: true });
     };
     const stop = async () => {
         setIsRunning(false);
+
+        cachedLogs = genSeedArr.join(":");
+        localStorage.setItem("cachedSeedArr", cachedLogs);
         localStorage.setItem("seedCount", `${count}`);
         window.api.updateSearchStatus({ password: tokenPass, bool: false });
     };
