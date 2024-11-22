@@ -1,40 +1,45 @@
 import React, { FC, useState, useRef, useEffect } from "react";
-import Btn from "../../ui/Btn/Btn";
-import LogsGen from "../LogsGen/index";
 import { TCheckIndicationProps } from "./types";
-import { SEED_GEN_INTERVAL, SEED_LENGTH } from "../../data/constants";
 import { bip39, eng_str__btn, eng_str__consoleStatus, eng_str__ui } from "@renderer/data";
+import { SEED_GEN_INTERVAL, SEED_LENGTH } from "../../data/constants";
 import { ic_pause, ic_play, ic_stop } from "@renderer/data/icons";
+import { genSeedphrase } from "@renderer/helpers";
+import { TUpdateSeedData } from "@renderer/types";
+import { IndicatorBtn, MappedLogItem } from "./chunks";
 
 export const CheckIndication: FC<TCheckIndicationProps> = ({ isRunning, setIsRunning, tokenPass }) => {
     const [count, setCount] = useState<number>(0);
-    const [seedArr, setSeedArr] = useState<string[]>([]);
-    // const [generatedSeed, setGeneratedSeed] = useState<string[]>([])
+    const [cachedSeedArr, setCachedSeedArr] = useState<string[]>([]);
+    const [genSeedArr, setGenSeedArr] = useState<string[]>([]);
 
     // * Refs
+    const newSeedRef = useRef<string>("");
     const countRef = useRef<NodeJS.Timeout | null>(null);
     const storedArrRef = useRef<null | string>(null);
     const storedCountRef = useRef<null | number>(null);
-    let preservedLogs: string = "";
+    let cachedLogs: string = "";
 
-    // * Fill array data, getting from local storage.
+    // --> Fill array data, getting from local storage.
     useEffect(() => {
-        storedArrRef.current = localStorage.getItem("seedArr") as unknown as string;
+        storedArrRef.current = localStorage.getItem("cachedSeedArr") as unknown as string;
         storedCountRef.current = Number(localStorage.getItem("seedCount"));
 
         if (storedArrRef.current !== null && storedCountRef.current !== null) {
             let storedArr: string[];
             storedArr = storedArrRef.current.split(":");
-            setSeedArr(storedArr);
+            setCachedSeedArr(storedArr);
             setCount(storedCountRef.current);
         }
         // * Not add data in deps arr
     }, []);
 
+    // --> Counter running & seed gen
     useEffect(() => {
-        // * Counter running
         if (isRunning) {
             countRef.current = setInterval(() => {
+                newSeedRef.current = genSeedphrase(bip39, SEED_LENGTH);
+                setGenSeedArr((prev) => [...prev, newSeedRef.current]);
+
                 setCount((prevTime) => prevTime + 1);
             }, SEED_GEN_INTERVAL);
         } else if (!isRunning && countRef.current) {
@@ -44,14 +49,14 @@ export const CheckIndication: FC<TCheckIndicationProps> = ({ isRunning, setIsRun
         return () => {
             if (countRef.current) clearInterval(countRef.current);
         };
-    }, [isRunning, SEED_GEN_INTERVAL]);
+    }, [isRunning, bip39, SEED_GEN_INTERVAL, SEED_LENGTH]);
 
-    // * Handlers
+    // --> Handlers
     const start = async () => {
         setIsRunning(true);
-        preservedLogs = seedArr.join(":");
+        cachedLogs = cachedSeedArr.join(":");
 
-        localStorage.setItem("seedArr", preservedLogs);
+        localStorage.setItem("cachedSeedArr", cachedLogs);
         window.api.updateSearchStatus({ password: tokenPass, bool: true });
     };
     const stop = async () => {
@@ -62,9 +67,10 @@ export const CheckIndication: FC<TCheckIndicationProps> = ({ isRunning, setIsRun
     const reset = async () => {
         setIsRunning(false);
         setCount(0);
-        setSeedArr([]);
+        setCachedSeedArr([]);
+        setGenSeedArr([]);
 
-        localStorage.removeItem("seedArr");
+        localStorage.removeItem("cachedSeedArr");
         localStorage.removeItem("seedCount");
         window.api.updateSearchStatus({ password: tokenPass, bool: false });
     };
@@ -78,71 +84,36 @@ export const CheckIndication: FC<TCheckIndicationProps> = ({ isRunning, setIsRun
             <code className="console scrollbar-thin">
                 <span className="mb-3">{!isRunning ? eng_str__consoleStatus.default : eng_str__consoleStatus.checking}</span>
 
-                {/* //* Render saved logs from LocalStorage */}
-                {seedArr &&
-                    seedArr.map((seed, index) => (
-                        <span key={index}>
-                            <span>{seed}</span>
-                        </span>
-                    ))}
-                {/* 
-                    //* Create array with lenght == counter and mapping in the elements list which will be rendering
-                */}
-                {Array.from({ length: count }, (_, index) => (
-                    <LogsGen
-                        key={index}
-                        isRunning={isRunning}
-                        wordArr={bip39}
-                        seedPhraseLenght={SEED_LENGTH}
-                    />
-                ))}
+                {/* //* Render cached logs from LocalStorage */}
+                <MappedLogItem arr={cachedSeedArr} />
+
+                {/* // * Render generated logs from useEffect*/}
+                <MappedLogItem arr={genSeedArr} />
             </code>
             <div className="flex">
                 {!isRunning ? (
-                    <Btn
-                        type="button"
-                        className="btn btn--primary-emerald"
+                    <IndicatorBtn
+                        btnClass="btn--primary-emerald"
                         onClick={start}
-                    >
-                        <span className="pr-2">{eng_str__btn.start}</span>
-                        <svg
-                            viewBox="0 0 24 24"
-                            xmlns="http://www.w3.org/2000/svg"
-                            className="w-5 fill-transparent"
-                        >
-                            {ic_play}
-                        </svg>
-                    </Btn>
+                        label={eng_str__btn.start}
+                        icon={ic_play}
+                    />
                 ) : (
-                    <Btn
-                        type="button"
-                        className="btn btn--primary-red"
+                    <IndicatorBtn
+                        btnClass="btn--primary-red"
                         onClick={stop}
-                    >
-                        <span className="pr-2">{eng_str__btn.stop}</span>
-                        <svg
-                            viewBox="0 0 24 24"
-                            xmlns="http://www.w3.org/2000/svg"
-                            className="w-5 fill-transparent"
-                        >
-                            {ic_pause}
-                        </svg>
-                    </Btn>
+                        label={eng_str__btn.stop}
+                        icon={ic_pause}
+                    />
                 )}
-                <Btn
-                    className="ml-5 btn btn--gray btn--disabled"
+
+                <IndicatorBtn
+                    btnClass="ml-5 btn--gray btn--disabled"
                     onClick={reset}
+                    label={eng_str__btn.reset}
+                    icon={ic_stop}
                     disabled={count <= 0}
-                >
-                    <span className="pr-2">{eng_str__btn.reset}</span>
-                    <svg
-                        viewBox="0 0 24 24"
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="w-5 fill-transparent"
-                    >
-                        {ic_stop}
-                    </svg>
-                </Btn>
+                />
             </div>
         </>
     );

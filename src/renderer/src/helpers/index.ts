@@ -22,19 +22,19 @@ export function randomUniqueNumArr(length: number, minValue: number, maxValue: n
 export const getRandomWord = (wordArr: string[]): string => wordArr[Math.floor(Math.random() * wordArr.length)];
 
 export const genSeedphrase = (wordArr: string[], seedPhraseLenght: number): string => {
-    const seedArr: string[] = [];
+    const cachedSeedArr: string[] = [];
     let randomWord: string = "";
 
     for (let i: number = 0; i < seedPhraseLenght; i++) {
         randomWord = getRandomWord(wordArr);
 
         // * If current word match with previous, generate word again
-        if (i > 0 && randomWord === seedArr[i - 1]) randomWord = getRandomWord(wordArr);
-        seedArr.push(randomWord);
+        if (i > 0 && randomWord === cachedSeedArr[i - 1]) randomWord = getRandomWord(wordArr);
+        cachedSeedArr.push(randomWord);
     }
 
     // * Create string from array and set value
-    const newSeedPhrase = seedArr.join(" ");
+    const newSeedPhrase = cachedSeedArr.join(" ");
     return newSeedPhrase;
 };
 
@@ -70,4 +70,3 @@ export const getCurrentTimeFormat = (): string => {
 };
 
 export const getHostname = (protocol: string, port: number, route?: string) => `${protocol}://localhost:${port}/${route}`;
-
