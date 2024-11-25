@@ -1,4 +1,4 @@
-import React, { FormEvent, ChangeEvent, FC, useState, useEffect } from "react";
+import React, { FormEvent, FC, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { eng_str__login, eng__str_err, eng_str__btn } from "@renderer/data";
@@ -10,6 +10,7 @@ import { TFormData } from "@renderer/types";
 import { TLoginForm } from "./types";
 import { getHostname, sendLog } from "@renderer/helpers";
 import { useAuthContext } from "@renderer/providers/AuthContext";
+import { NoticeCard } from "@renderer/ui";
 
 const FORM_INIT_VALUES = {
     password: "",
@@ -68,16 +69,10 @@ export const LoginForm: FC<TLoginForm> = ({}) => {
             method="POST"
             onSubmit={handleSubmit}
         >
-            <div className="bg-emerald-50 flex flex-1 items-center rounded-lg px-3 py-2 text-sm text-emerald-900">
-                <svg
-                    viewBox="0 0 24 24"
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="fill-emerald-900 w-10 stroke-1"
-                >
-                    {ic_infoRounded}
-                </svg>
-                <span className="pl-3">{eng_str__login.formNotice}</span>
-            </div>
+            <NoticeCard
+                icon={ic_infoRounded}
+                label={eng_str__login.formNotice}
+            />
             <div>
                 <div>
                     <input

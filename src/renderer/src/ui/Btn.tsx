@@ -7,16 +7,14 @@ type TBtnProps = ButtonHTMLAttributes<HTMLButtonElement> & {
     children: React.ReactNode;
 };
 
-export const Btn: FC<TBtnProps> = ({ id, type, className, children, disabled = false, onClick }) => {
-    return (
-        <button
-            id={id}
-            type={type}
-            className={`btn ${className}`}
-            disabled={disabled}
-            onClick={onClick}
-        >
-            {children}
-        </button>
-    );
-};
+export const Btn: FC<TBtnProps> = ({ id, type, className, children, disabled = false, onClick }) => (
+    <button
+        id={id}
+        type={type}
+        className={`btn ${className}`}
+        disabled={disabled}
+        onClick={onClick}
+    >
+        {children}
+    </button>
+);
