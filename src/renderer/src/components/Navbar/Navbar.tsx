@@ -1,10 +1,21 @@
 import React, { FC, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { API_CHANNELS, SERVER_PORT } from "@renderer/data/constants";
+import { SERVER_PORT } from "@renderer/data/constants";
 import { getHostname } from "@renderer/helpers";
 import { TNavbar } from "./types";
 import { eng_str__ui } from "@renderer/data";
 import { ic_logout } from "@renderer/data/icons";
+
+enum API_CHANNELS {
+    logout = "logout",
+    authCheck = "auth-check",
+    authValidate = "auth-validate",
+    onLoginRes = "on-login-res",
+    updSeed = "update-seed",
+    onUpdSeed = "on-update-seed",
+    updSearchStatus = "update-search-status",
+    sendActivityLog = "send-activity-log",
+}
 
 export const Navbar: FC<TNavbar> = ({}) => {
     const navigate = useNavigate();

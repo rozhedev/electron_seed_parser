@@ -51,7 +51,7 @@ export const SeedGateway: FC<TSeedGateway> = ({ isRunning, messages, setMessages
                 <span className="font-medium">{seedListLength}</span>
             </div>
             <code className={className}>
-                <span className="text-gray-600 font-medium">{eng_str__ui.valitSeedAdresses}</span>
+                <span className="font-medium mb-3">{eng_str__ui.valitSeedAdresses}</span>
                 {messages.map((msg: string, index: number) => (
                     <div
                         key={index}

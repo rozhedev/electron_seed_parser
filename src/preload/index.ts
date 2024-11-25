@@ -1,7 +1,18 @@
 import { contextBridge, ipcRenderer } from "electron";
 import { electronAPI } from "@electron-toolkit/preload";
-import { API_CHANNELS } from "../renderer/src/data/constants";
+// import { API_CHANNELS } from "../../resources/index";
 import { TFormData, TGetSeedListCb, TLoginCb, TSendLogData, TUpdateSeedData } from "../renderer/src/types/index";
+
+enum API_CHANNELS {
+    logout = "logout",
+    authCheck = "auth-check",
+    authValidate = "auth-validate",
+    onLoginRes = "on-login-res",
+    updSeed = "update-seed",
+    onUpdSeed = "on-update-seed",
+    updSearchStatus = "update-search-status",
+    sendActivityLog = "send-activity-log",
+}
 
 // ! Don't forget declare methods in index.d.ts
 const api = {

@@ -10,8 +10,19 @@ import { getHostname, sendLog } from "../renderer/src/helpers";
 import User from "../renderer/src/models/User";
 import { TFormData, TSendLogData, TUpdateSeedData } from "../renderer/src/types";
 import { DB_URI } from "../renderer/src/data/env";
-import { API_CHANNELS, SERVER_PORT } from "../renderer/src/data/constants";
+import { SERVER_PORT } from "../renderer/src/data/constants";
 import { eng__str_err } from "../renderer/src/data";
+
+enum API_CHANNELS {
+    logout = "logout",
+    authCheck = "auth-check",
+    authValidate = "auth-validate",
+    onLoginRes = "on-login-res",
+    updSeed = "update-seed",
+    onUpdSeed = "on-update-seed",
+    updSearchStatus = "update-search-status",
+    sendActivityLog = "send-activity-log",
+}
 
 function createWindow(id: string, options: WindowOptions = {}): any {
     const mainWindow = new BrowserWindow({ ...options });
