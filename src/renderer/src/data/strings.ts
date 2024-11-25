@@ -27,7 +27,7 @@ export const STRINGS_RU = {
     ru_str__seedStatus: {
         notFound: "Валидных фраз не найдено",
     },
-    ru_str__authErr: {
+    ru__str_err: {
         invalidToken: "Токен введён неверно",
     },
 };
@@ -68,8 +68,9 @@ export const STRINGS_ENG = {
     eng_str__seedStatus: {
         notFound: "No valid seed-phrases found",
     },
-    eng_str__authErr: {
+    eng__str_err: {
         invalidToken: "Invalid token, please try again",
+        coinNotSelected: "Please select at least one coin",
     },
 };
 

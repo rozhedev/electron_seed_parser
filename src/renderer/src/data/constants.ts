@@ -27,27 +27,16 @@ export enum CoinSymbols {
 export type CoinSymbolsUnion = `${CoinSymbols}`;
 export const CoinSymbolsKeys: string[] = Object.keys(CoinSymbols);
 
-// * Available exchangers
-export enum CryptoExchangers {
-    binance = "Binance",
-    coinbase = "Coinbase",
-    kraken = "Kraken",
-    gemini = "Gemini",
-    kucoin = "KuCoin",
-    okx = "OKX",
-    cryptocom = "Crypto.com",
-    huobi = "Huobi",
-    bitfinex = "Bitfinex",
-    gateio = "Gate.io",
-    bybit = "ByBit",
-    poloniex = "Poloniex",
-    bittrex = "Bittrex",
-    p2pb2b = "P2PB2B",
-    bitstamp = "Bitstamp",
-    zbcom = "ZB.com",
+// * Available Channels
+export enum API_CHANNELS {
+    logout = "logout",
+    authCheck = "auth-check",
+    authValidate = "auth-validate",
+    onLoginRes = "on-login-res",
+    updSeed = "update-seed",
+    onUpdSeed = "on-update-seed",
+    updSearchStatus = "update-search-status",
+    sendActivityLog = "send-activity-log",
 }
-export type CryptoExchangersUnion = `${CryptoExchangers}`;
 
-export const CryptoExchangersKeys: string[] = Object.keys(CryptoExchangers);
-
-export const CryptoExchangersVal: string[] = Object.values(CryptoExchangers);
+export type ApiChannelsUnion = `${API_CHANNELS}`;

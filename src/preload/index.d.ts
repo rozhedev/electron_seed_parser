@@ -13,6 +13,7 @@ declare global {
             onUpdateSeed: (cb: (res: { success: boolean; payload: TIsUserExist }) => void) => void;
             updateSearchStatus: (data: TUpdateSeedData) => void;
             sendActivityLog: (data: TSendLogData) => void;
+            removeListener: (channel: string, handler: () => void) => void;
         };
     }
 }

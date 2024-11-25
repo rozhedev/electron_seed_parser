@@ -1,16 +1,17 @@
 import React, { FC, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { SERVER_PORT } from "@renderer/data/constants";
+import { API_CHANNELS, SERVER_PORT } from "@renderer/data/constants";
 import { getHostname } from "@renderer/helpers";
 import { TNavbar } from "./types";
 import { eng_str__ui } from "@renderer/data";
+import { ic_logout } from "@renderer/data/icons";
 
 export const Navbar: FC<TNavbar> = ({}) => {
     const navigate = useNavigate();
     const [isOpen, setIsOpen] = useState<boolean>(false);
 
     const handleLogout = async () => {
-        const res = await fetch(getHostname("http", SERVER_PORT, "logout"), {
+        const res = await fetch(getHostname("http", SERVER_PORT, API_CHANNELS.logout), {
             method: "POST",
             credentials: "include",
         });
@@ -58,10 +59,18 @@ export const Navbar: FC<TNavbar> = ({}) => {
                         <li>
                             <Link
                                 to={"/"}
-                                className="link .navlink--red"
+                                className="link"
                                 onClick={handleLogout}
                             >
-                                {eng_str__ui.logout}
+                                <svg
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    className="w-5 fill-transparent"
+                                >
+                                    {ic_logout}
+                                </svg>
+                                <span className="ml-2">{eng_str__ui.logout}</span>
                             </Link>
                         </li>
                     </ul>

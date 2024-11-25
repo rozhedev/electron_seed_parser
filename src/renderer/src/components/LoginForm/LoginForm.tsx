@@ -1,7 +1,7 @@
 import React, { FormEvent, ChangeEvent, FC, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-import { eng_str__login, eng_str__authErr, eng_str__btn } from "@renderer/data";
+import { eng_str__login, eng__str_err, eng_str__btn } from "@renderer/data";
 import { ADMIN_LOG_CHANNEL, TG_BOT_TOKEN } from "@renderer/data/env";
 import { TOKEN_LENGHT, SERVER_PORT } from "@renderer/data/constants";
 import { ic_infoRounded, ic_login } from "@renderer/data/icons";
@@ -93,7 +93,7 @@ export const LoginForm: FC<TLoginForm> = ({}) => {
                         value={formData.password}
                     />
                 </div>
-                {authError && <small className="text-red-600 font-semibold">{eng_str__authErr.invalidToken}</small>}
+                {authError && <small className="text-red-600 font-semibold">{eng__str_err.invalidToken}</small>}
             </div>
             <div>
                 <button

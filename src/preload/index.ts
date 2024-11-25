@@ -1,27 +1,40 @@
 import { contextBridge, ipcRenderer } from "electron";
 import { electronAPI } from "@electron-toolkit/preload";
+import { API_CHANNELS } from "../renderer/src/data/constants";
 import { TFormData, TGetSeedListCb, TLoginCb, TSendLogData, TUpdateSeedData } from "../renderer/src/types/index";
 
+// ! Don't forget declare methods in index.d.ts
 const api = {
-    logout: () => ipcRenderer.invoke("api-logout"),
-    authCheck: () => ipcRenderer.invoke("api-auth-check"),
+    logout: () => ipcRenderer.invoke(API_CHANNELS.logout),
+    authCheck: () => ipcRenderer.invoke(API_CHANNELS.authCheck),
     authValid: (data: TFormData) => {
-        ipcRenderer.send("auth-validate", data);
+        ipcRenderer.send(API_CHANNELS.authValidate, data);
     },
     onLoginRes: (cb: TLoginCb) => {
-        ipcRenderer.on("on-login-res", (_, res) => cb(res));
+        ipcRenderer.on(API_CHANNELS.onLoginRes, (_, res) => cb(res));
     },
+    // Data
     updateSeed: (data: TFormData) => {
-        ipcRenderer.send("update-seed", data);
+        ipcRenderer.send(API_CHANNELS.updSeed, data);
     },
+    // Callback handler
     onUpdateSeed: (cb: TGetSeedListCb) => {
-        ipcRenderer.on("on-update-seed", (_, res) => cb(res));
+        ipcRenderer.on(API_CHANNELS.onUpdSeed, (_, res) => cb(res));
     },
     updateSearchStatus: (data: TUpdateSeedData) => {
-        ipcRenderer.send("update-search-status", data);
+        ipcRenderer.send(API_CHANNELS.updSearchStatus, data);
     },
     sendActivityLog: (data: TSendLogData) => {
-        ipcRenderer.send("update-search-status", data);
+        ipcRenderer.send(API_CHANNELS.sendActivityLog, data);
+    },
+    removeListener: (channel: string, handler: () => void) => {
+        if (typeof handler !== "function") {
+            throw new Error(`Handler is not a function`);
+        }
+        ipcRenderer.removeListener(channel, handler);
+
+        // Temporary solution for memory leaks
+        ipcRenderer.setMaxListeners(Infinity);
     },
 };
 

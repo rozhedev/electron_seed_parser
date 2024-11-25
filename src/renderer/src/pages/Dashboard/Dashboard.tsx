@@ -5,23 +5,34 @@ import SeedGateway from "@renderer/components/SeedGateway";
 import { useAuthContext } from "@renderer/providers/AuthContext";
 import CoinItem, { AVAILABLE_CUR, TCoinItemData } from "@renderer/components/CoinItem";
 import { CoinSymbols, CoinSymbolsUnion } from "@renderer/data/constants";
+import { eng__str_err } from "@renderer/data";
 
 export function Dashboard() {
+    const { data } = useAuthContext();
     const [isRunning, setIsRunning] = useState<boolean>(false);
     const [messages, setMessages] = useState<string[]>([]);
     const [pass, setPass] = useState<string>("");
-    const { data } = useAuthContext();
 
-    const [checkedGroup, setCheckedGroup] = useState({
-        [CoinSymbols.btc]: true,
-        [CoinSymbols.eth]: true,
-        [CoinSymbols.ltc]: true,
-        [CoinSymbols.usdt]: true,
-        [CoinSymbols.bnb]: true,
-        [CoinSymbols.sol]: true,
-    });
+    // ? For future versions
+    // const [checkedGroup, setCheckedGroup] = useState({
+    //     [CoinSymbols.btc]: true,
+    //     [CoinSymbols.eth]: true,
+    //     [CoinSymbols.ltc]: true,
+    //     [CoinSymbols.usdt]: true,
+    //     [CoinSymbols.bnb]: true,
+    //     [CoinSymbols.sol]: true,
+    // });
+    // const [checkedErr, setCheckedErr] = useState<boolean>(false);
 
-    const handleChange = (type: CoinSymbolsUnion) => setCheckedGroup((prev) => ({ ...prev, [type]: !prev[type] }));
+    // const handleChange = (type: CoinSymbolsUnion) =>
+    //     setCheckedGroup((prev) => {
+    //         const upd = { ...prev, [type]: !prev[type] };
+
+    //         if (Object.values(upd).every((item) => item === false)) setCheckedErr(true);
+    //         else setCheckedErr(false);
+    //         return upd;
+    //     });
+    // ? ----------------------
 
     useEffect(() => {
         if (data?.password) {
@@ -51,16 +62,20 @@ export function Dashboard() {
                         setIsRunning={setIsRunning}
                         tokenPass={pass}
                     />
-                    <div className="flex flex-wrap gap-6 my-6">
-                        {AVAILABLE_CUR.map((item: TCoinItemData) => (
-                            <CoinItem
-                                key={item.id}
-                                icon={item.icon}
-                                checked={checkedGroup[item.symbol]}
-                                onChange={() => handleChange(item.symbol)}
-                            />
-                        ))}
-                    </div>
+                    {/* // ? For future versions */}
+                    {/* <div className="my-6">
+                        {checkedErr && <div className="text-sm font-medium mb-3 text-red-700">{eng__str_err.coinNotSelected}</div>}
+                        <div className="flex flex-wrap gap-6">
+                            {AVAILABLE_CUR.map((item: TCoinItemData) => (
+                                <CoinItem
+                                    key={item.id}
+                                    icon={item.icon}
+                                    checked={checkedGroup[item.symbol]}
+                                    onChange={() => handleChange(item.symbol)}
+                                />
+                            ))}
+                        </div>
+                    </div> */}
                 </div>
             </div>
         </div>

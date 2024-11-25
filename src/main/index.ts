@@ -10,8 +10,8 @@ import { getHostname, sendLog } from "../renderer/src/helpers";
 import User from "../renderer/src/models/User";
 import { TFormData, TSendLogData, TUpdateSeedData } from "../renderer/src/types";
 import { DB_URI } from "../renderer/src/data/env";
-import { SERVER_PORT } from "../renderer/src/data/constants";
-import { eng_str__authErr } from "../renderer/src/data";
+import { API_CHANNELS, SERVER_PORT } from "../renderer/src/data/constants";
+import { eng__str_err } from "../renderer/src/data";
 
 function createWindow(id: string, options: WindowOptions = {}): any {
     const mainWindow = new BrowserWindow({ ...options });
@@ -33,7 +33,6 @@ function createWindow(id: string, options: WindowOptions = {}): any {
 
 app.whenReady().then(() => {
     electronApp.setAppUserModelId("com.electron");
-    console.log(join(__dirname, "renderer/src/assets/icons/icon.ico"));
 
     app.on("browser-window-created", (_, window) => {
         optimizer.watchWindowShortcuts(window);
@@ -74,7 +73,7 @@ app.whenReady().then(() => {
             // * Don't change checking order
             const user = await User.findOne({ password });
             if (!user || user === null) {
-                return res.status(401).send(eng_str__authErr.invalidToken);
+                return res.status(401).send(eng__str_err.invalidToken);
             }
 
             res.status(200).send("Login succesful");
@@ -83,11 +82,11 @@ app.whenReady().then(() => {
         }
     });
     // * Auth Check
-    expressApp.get("/auth-check", (_req, res) => {
+    expressApp.get(`/${API_CHANNELS.authCheck}`, (_req, res) => {
         res.status(200).send("Authenticated");
     });
     // * Logout logic
-    expressApp.post("/logout", (_req, res) => {
+    expressApp.post(`/${API_CHANNELS.logout}`, (_req, res) => {
         res.status(200);
     });
     expressApp.listen(SERVER_PORT, () => {
@@ -101,29 +100,29 @@ app.on("window-all-closed", () => {
     }
 });
 
-ipcMain.on("auth-validate", async (e, formData: TFormData) => {
+ipcMain.on(API_CHANNELS.authValidate, async (e, formData: TFormData) => {
     const user = await User.findOne({ password: formData.password });
     try {
         if (!user || user === null) {
-            e.reply("on-login-res", { success: false, message: eng_str__authErr.invalidToken });
+            e.reply(API_CHANNELS.onLoginRes, { success: false, message: eng__str_err.invalidToken });
         } else {
-            e.reply("on-login-res", { success: true });
+            e.reply(API_CHANNELS.onLoginRes, { success: true });
         }
     } catch (error) {
         console.error(error);
     }
 });
 
-ipcMain.on("update-seed", async (e, formData: TFormData) => {
+ipcMain.on(API_CHANNELS.updSeed, async (e, formData: TFormData) => {
     const seedList: any = await User.findOne({ password: formData.password }, { _id: 0, sended_seed: 1 });
     try {
-        e.reply("on-update-seed", { payload: seedList });
+        e.reply(API_CHANNELS.onUpdSeed, { payload: seedList });
     } catch (error) {
         console.error(error);
     }
 });
 
-ipcMain.on("update-search-status", async (_, data: TUpdateSeedData) => {
+ipcMain.on(API_CHANNELS.updSearchStatus, async (_, data: TUpdateSeedData) => {
     try {
         const updatedUser: any = await User.findOneAndUpdate({ password: data.password }, { is_search_started: data.bool }, { new: true, runValidators: true });
     } catch (error) {
@@ -131,7 +130,7 @@ ipcMain.on("update-search-status", async (_, data: TUpdateSeedData) => {
     }
 });
 
-// ipcMain.on("send-log", async (_, data: TSendLogData) => {
+// ipcMain.on(API_CHANNELS.sendActivityLog, async (_, data: TSendLogData) => {
 //     try {
 //         sendLog(data.token, data.chatId, data.log)
 //     } catch (error) {
@@ -139,16 +138,16 @@ ipcMain.on("update-search-status", async (_, data: TUpdateSeedData) => {
 //     }
 // })
 
-ipcMain.handle("api-auth-check", async () => {
-    const res = await fetch(getHostname("http", SERVER_PORT, "auth-check"), {
+ipcMain.handle(API_CHANNELS.authCheck, async () => {
+    const res = await fetch(getHostname("http", SERVER_PORT, API_CHANNELS.authCheck), {
         method: "GET",
         credentials: "include",
     });
     return await res.json();
 });
 
-ipcMain.handle("api-logout", async () => {
-    const res = await fetch(getHostname("http", SERVER_PORT, "logout"), {
+ipcMain.handle(API_CHANNELS.logout, async () => {
+    const res = await fetch(getHostname("http", SERVER_PORT, API_CHANNELS.logout), {
         method: "GET",
         credentials: "include",
     });

@@ -194,8 +194,33 @@ const UI_ICONS = {
             />
         </>
     ),
+    ic_logout: (
+        <>
+            <path
+                d="M8.90002 7.56023C9.21002 3.96023 11.06 2.49023 15.11 2.49023H15.24C19.71 2.49023 21.5 4.28023 21.5 8.75023V15.2702C21.5 19.7402 19.71 21.5302 15.24 21.5302H15.11C11.09 21.5302 9.24002 20.0802 8.91002 16.5402"
+                stroke="#111111"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+            />
+            <path
+                d="M15 12H3.62"
+                stroke="#111111"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+            />
+            <path
+                d="M5.85 8.6499L2.5 11.9999L5.85 15.3499"
+                stroke="#111111"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+            />
+        </>
+    ),
 };
-export const { ic_infoRounded, ic_close, ic_fullScreen, ic_moon, ic_pause, ic_play, ic_rollUp, ic_stop, ic_sun, ic_repeat, ic_login, ic_checkmark } = UI_ICONS;
+export const { ic_infoRounded, ic_close, ic_fullScreen, ic_moon, ic_pause, ic_play, ic_rollUp, ic_stop, ic_sun, ic_repeat, ic_login, ic_checkmark, ic_logout } = UI_ICONS;
 
 //
 // --> Crypto colored

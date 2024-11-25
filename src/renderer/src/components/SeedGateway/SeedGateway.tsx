@@ -6,19 +6,25 @@ import { eng_str__btn, eng_str__seedStatus, eng_str__ui } from "@renderer/data";
 import { ic_repeat } from "@renderer/data/icons";
 
 export const SeedGateway: FC<TSeedGateway> = ({ isRunning, messages, setMessages, className, tokenPass }) => {
-    // * Rewrite sended seed logic
     const [isLoading, setIsLoading] = useState<boolean>(false);
     const [seedListLength, setSeedListLength] = useState<number>(0);
     const [updateDate, setUpdateDate] = useState<string>(`${getCurrentTimeFormat()} | ${getCurrentDateFormat()}`);
 
-    useEffect(() => {
-        window.api.onUpdateSeed((res) => {
-            const seedList = res.payload._doc.sended_seed;
-            setSeedListLength(seedList.length);
+    const handleUpdateSeed = (res: any) => {
+        const seedList = res.payload._doc.sended_seed;
+        setSeedListLength(seedList.length);
 
-            if (seedList.length) setMessages(seedList);
-            else setMessages([eng_str__seedStatus.notFound]);
-        });
+        if (seedList.length) setMessages(seedList);
+        else setMessages([eng_str__seedStatus.notFound]);
+    };
+
+    useEffect(() => {
+        window.api.removeListener("on-update-seed", handleUpdateSeed as () => void);
+        window.api.onUpdateSeed(handleUpdateSeed);
+
+        return () => {
+            window.api.removeListener("on-update-seed", handleUpdateSeed as () => void);
+        };
     }, [isLoading]);
 
     const handleUpdateBtnClick = () => {
@@ -33,6 +39,7 @@ export const SeedGateway: FC<TSeedGateway> = ({ isRunning, messages, setMessages
         }, 400);
     };
 
+    // --> -----------------------------
     return (
         <div>
             <div className="mt-5">
@@ -44,9 +51,14 @@ export const SeedGateway: FC<TSeedGateway> = ({ isRunning, messages, setMessages
                 <span className="font-medium">{seedListLength}</span>
             </div>
             <code className={className}>
-                <span>{eng_str__ui.valitSeedAdresses}</span>
+                <span className="text-gray-600 font-medium">{eng_str__ui.valitSeedAdresses}</span>
                 {messages.map((msg: string, index: number) => (
-                    <span key={index}>{msg}</span>
+                    <div
+                        key={index}
+                        className="mb-2 font-medium"
+                    >
+                        {msg}
+                    </div>
                 ))}
             </code>
             <IndicatorBtn
