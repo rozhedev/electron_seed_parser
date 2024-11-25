@@ -1,18 +1,9 @@
 import { contextBridge, ipcRenderer } from "electron";
 import { electronAPI } from "@electron-toolkit/preload";
-// import { API_CHANNELS } from "../../resources/index";
-import { TFormData, TGetSeedListCb, TLoginCb, TSendLogData, TUpdateSeedData } from "../renderer/src/types/index";
 
-enum API_CHANNELS {
-    logout = "logout",
-    authCheck = "auth-check",
-    authValidate = "auth-validate",
-    onLoginRes = "on-login-res",
-    updSeed = "update-seed",
-    onUpdSeed = "on-update-seed",
-    updSearchStatus = "update-search-status",
-    sendActivityLog = "send-activity-log",
-}
+// Don't use alias for preven runtime errors when building
+import { TFormData, TGetSeedListCb, TLoginCb, TSendLogData, TUpdateSeedData } from "../renderer/src/types/index";
+import { API_CHANNELS } from "../shared/channels";
 
 // ! Don't forget declare methods in index.d.ts
 const api = {
