@@ -1,15 +1,14 @@
 @import "./base.css";
 
-.stopwatch {
-    @apply px-4;
-}
-
 /* Default values for all elements:
  rounded-xl
  All btn: 
  tracking-wide uppercase
 
 */
+.stopwatch {
+    @apply px-4;
+}
 
 .btn {
     @apply flex flex-row items-center justify-center text-sm py-3 px-4 font-medium cursor-pointer rounded-xl text-white outline outline-2 transition-all tracking-wide uppercase;

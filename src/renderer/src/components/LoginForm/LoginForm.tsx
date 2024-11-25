@@ -89,7 +89,7 @@ export const LoginForm: FC<TLoginForm> = ({}) => {
                         placeholder={eng_str__login.tokenPlaceholder}
                         minLength={TOKEN_LENGHT}
                         maxLength={TOKEN_LENGHT}
-                        onChange={(e: ChangeEvent<HTMLInputElement>) => setFormData({ ...formData, password: e.target.value })}
+                        onChange={(e) => setFormData({ ...formData, password: e.target.value })}
                         value={formData.password}
                     />
                 </div>
